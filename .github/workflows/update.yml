@@ -1,0 +1,42 @@
+name: Update formulae
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-formulae
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Refresh from complete releases
+        run: ruby hack/update.rb
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Check tap syntax and style
+        run: |
+          brew tap --custom-remote roshbhatia/tap "$PWD"
+          brew readall roshbhatia/tap
+          brew style Formula/*.rb
+          for formula in Formula/*.rb; do
+            name=$(basename "$formula" .rb)
+            brew audit --strict "roshbhatia/tap/$name"
+          done
+      - name: Commit changed formulae
+        run: |
+          if test -z "$(git status --porcelain -- Formula)"; then
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add Formula
+          git commit -m "chore: update formulae"
+          git push

@@ -1,0 +1,62 @@
+packages:
+  - name: ask
+    repository: roshbhatia/ask
+    description: Query agent harnesses through provider-defined adapters
+    homepage: https://github.com/roshbhatia/ask
+    license: MIT
+    binary: ask
+    archive: ask_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+    completions: generated
+
+  - name: changes
+    repository: roshbhatia/changes
+    description: Review Git changes with symbol and call context
+    homepage: https://github.com/roshbhatia/changes
+    license: MIT
+    binary: changes
+    archive: changes_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+    completions: generated
+
+  - name: traces
+    repository: roshbhatia/traces
+    description: Inspect agent activity as a trace tree
+    homepage: https://github.com/roshbhatia/traces
+    license: MIT
+    binary: traces
+    archive: traces_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+    completions: generated
+
+  - name: orc
+    repository: roshbhatia/orc
+    description: Provider-neutral control plane for agent workflows
+    homepage: https://github.com/roshbhatia/orc
+    license: MIT
+    binary: orc
+    archive: orc-%{runner_os}-%{runner_arch}.tar.gz
+    checksum: sidecar
+    layout: prefixed
+    explicit_version: true
+    pending: true
+
+  - name: specutil
+    repository: roshbhatia/specutil
+    description: Project OpenSpec changes into review-ready outputs
+    homepage: https://github.com/roshbhatia/specutil
+    license: MIT
+    binary: specutil
+    archive: specutil_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+    completions: generated
+
+  - name: seshy
+    repository: roshbhatia/seshy
+    description: Multi-repository worktree session manager
+    homepage: https://github.com/roshbhatia/seshy
+    license: MIT
+    binary: sy
+    archive: seshy_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+    completions: generated

@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  formulae:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check generated formulae
+        run: ruby hack/update.rb --check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Check tap syntax and style
+        run: |
+          brew tap --custom-remote roshbhatia/tap "$PWD"
+          brew readall roshbhatia/tap
+          brew style Formula/*.rb
+          for formula in Formula/*.rb; do
+            name=$(basename "$formula" .rb)
+            brew audit --strict "roshbhatia/tap/$name"
+          done
