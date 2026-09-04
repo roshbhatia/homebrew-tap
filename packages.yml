@@ -35,9 +35,9 @@ packages:
     homepage: https://github.com/roshbhatia/orc
     license: MIT
     binary: orc
-    archive: orc-%{runner_os}-%{runner_arch}.tar.gz
+    archive: orc_%{version}_%{os}_%{arch}.tar.gz
     checksum: sidecar
-    layout: prefixed
+    archive_root: orc_%{version}_*_*
     explicit_version: true
     pending: true
 

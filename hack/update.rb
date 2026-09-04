@@ -13,12 +13,12 @@ ROOT = Pathname.new(__dir__).parent
 FORMULAE = ROOT.join("Formula")
 TARGETS = {
   "macos" => {
-    "arm" => { "os" => "darwin", "arch" => "arm64", "runner_os" => "macOS", "runner_arch" => "ARM64" },
-    "intel" => { "os" => "darwin", "arch" => "amd64", "runner_os" => "macOS", "runner_arch" => "X64" }
+    "arm" => { "os" => "darwin", "arch" => "arm64" },
+    "intel" => { "os" => "darwin", "arch" => "amd64" }
   },
   "linux" => {
-    "arm" => { "os" => "linux", "arch" => "arm64", "runner_os" => "Linux", "runner_arch" => "ARM64" },
-    "intel" => { "os" => "linux", "arch" => "amd64", "runner_os" => "Linux", "runner_arch" => "X64" }
+    "arm" => { "os" => "linux", "arch" => "arm64" },
+    "intel" => { "os" => "linux", "arch" => "amd64" }
   }
 }.freeze
 
@@ -71,7 +71,7 @@ class GitHub
   end
 end
 
-def class_name(name)
+def formula_class_name(name)
   name.split(/[-_]/).map(&:capitalize).join
 end
 
@@ -140,58 +140,59 @@ def render_formula(github, package, release, template)
       artifact(github, package, assets, checksums, archive)
     end
   end
-  package = package.merge("class_name" => class_name(package.fetch("name")))
+  package = package.merge("class_name" => formula_class_name(package.fetch("name")))
   release = { "version" => version }
   context = binding
   context.local_variable_set(:systems, artifacts_by_system)
   ERB.new(template, trim_mode: "-").result(context)
 end
 
-options = { check: false, names: [] }
-OptionParser.new do |parser|
-  parser.banner = "Usage: hack/update.rb [--check] [PACKAGE ...]"
-  parser.on("--check", "Fail if generated formulae are stale") { options[:check] = true }
-end.parse!(into: options)
-options[:names] = ARGV
+if $PROGRAM_NAME == __FILE__
+  options = { check: false, names: [] }
+  OptionParser.new do |parser|
+    parser.banner = "Usage: hack/update.rb [--check] [PACKAGE ...]"
+    parser.on("--check", "Fail if generated formulae are stale") { options[:check] = true }
+  end.parse!(into: options)
+  options[:names] = ARGV
 
-manifest = YAML.safe_load(ROOT.join("packages.yml").read, permitted_classes: [], aliases: false)
-packages = manifest.fetch("packages")
-unless options[:names].empty?
-  unknown = options[:names] - packages.map { |package| package.fetch("name") }
-  abort "unknown package: #{unknown.join(", ")}" unless unknown.empty?
-  packages = packages.select { |package| options[:names].include?(package.fetch("name")) }
-end
-
-github = GitHub.new(ENV["GITHUB_TOKEN"] || ENV["GH_TOKEN"])
-template = ROOT.join("templates/formula.rb.erb").read
-changes = []
-skipped = []
-rendered_formulae = {}
-
-packages.each do |package|
-  release = complete_release(github, package)
-  unless release
-    if package["pending"]
-      skipped << package.fetch("name")
-      next
-    end
-    abort "#{package.fetch("name")}: no release contains all four platform archives"
+  manifest = YAML.safe_load(ROOT.join("packages.yml").read, permitted_classes: [], aliases: false)
+  packages = manifest.fetch("packages")
+  unless options[:names].empty?
+    unknown = options[:names] - packages.map { |package| package.fetch("name") }
+    abort "unknown package: #{unknown.join(", ")}" unless unknown.empty?
+    packages = packages.select { |package| options[:names].include?(package.fetch("name")) }
   end
 
-  destination = FORMULAE.join("#{package.fetch("name")}.rb")
-  rendered = render_formula(github, package, release, template)
-  next if destination.exist? && destination.read == rendered
+  github = GitHub.new(ENV["GITHUB_TOKEN"] || ENV["GH_TOKEN"])
+  template = ROOT.join("templates/formula.rb.erb").read
+  changes = []
+  skipped = []
+  rendered_formulae = {}
 
-  changes << destination.relative_path_from(ROOT).to_s
-  rendered_formulae[destination] = rendered
-end
+  packages.each do |package|
+    release = complete_release(github, package)
+    unless release
+      if package["pending"]
+        skipped << package.fetch("name")
+        next
+      end
+      abort "#{package.fetch("name")}: no release contains all four platform archives"
+    end
 
-warn "Skipped pending packages without a complete release: #{skipped.join(", ")}" unless skipped.empty?
-if options[:check] && !changes.empty?
-  abort "stale formulae: #{changes.join(", ")}"
+    destination = FORMULAE.join("#{package.fetch("name")}.rb")
+    rendered = render_formula(github, package, release, template)
+    next if destination.exist? && destination.read == rendered
+
+    changes << destination.relative_path_from(ROOT).to_s
+    rendered_formulae[destination] = rendered
+  end
+
+  warn "Skipped pending packages without a complete release: #{skipped.join(", ")}" unless skipped.empty?
+  abort "stale formulae: #{changes.join(", ")}" if options[:check] && !changes.empty?
+
+  unless options[:check]
+    FORMULAE.mkpath
+    rendered_formulae.each { |destination, rendered| destination.write(rendered) }
+  end
+  puts(changes.empty? ? "Formulae are current" : "Updated #{changes.join(", ")}")
 end
-unless options[:check]
-  FORMULAE.mkpath
-  rendered_formulae.each { |destination, rendered| destination.write(rendered) }
-end
-puts(changes.empty? ? "Formulae are current" : "Updated #{changes.join(", ")}")

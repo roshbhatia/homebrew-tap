@@ -17,6 +17,8 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v7
+      - name: Test updater
+        run: ruby test/update_test.rb
       - name: Refresh from complete releases
         run: ruby hack/update.rb
         env:

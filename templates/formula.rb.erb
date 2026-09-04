@@ -19,8 +19,9 @@ class <%= package.fetch("class_name") %> < Formula
 <% end -%>
 
   def install
-<% if package["layout"] == "prefixed" -%>
-    archive_root = Dir["<%= package.fetch("name") %>-*"].first
+<% if package["archive_root"] -%>
+    archive_root = Dir[<%= package.fetch("archive_root").gsub("%{version}", release.fetch("version")).dump %>]
+      .find { |path| File.directory?(path) }
     odie "release archive has no <%= package.fetch("name") %> root" unless archive_root
 
     bin.install "#{archive_root}/bin/<%= package.fetch("binary") %>"
