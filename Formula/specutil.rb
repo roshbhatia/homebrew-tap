@@ -6,22 +6,22 @@ class Specutil < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/roshbhatia/specutil/releases/download/v0.2.0/specutil_0.2.0_darwin_arm64.tar.gz"
-      sha256 "c298eb844e5f1c8053ed0ed76c4a43b0b802672dbbb270e9630a9786f0d5f142"
+      url "https://github.com/roshbhatia/specutil/releases/download/v0.3.0/specutil_0.3.0_darwin_arm64.tar.gz"
+      sha256 "6343ce74689a368ddb7036aee286e31a7b0de06ff2dcc4b3d5d30292ac7f639f"
     end
     on_intel do
-      url "https://github.com/roshbhatia/specutil/releases/download/v0.2.0/specutil_0.2.0_darwin_amd64.tar.gz"
-      sha256 "83505a40ca5bb430ef42fd30bd12d6c9b7916ea27a54fa7d49eecadc5c8a89ee"
+      url "https://github.com/roshbhatia/specutil/releases/download/v0.3.0/specutil_0.3.0_darwin_amd64.tar.gz"
+      sha256 "ee139775607ffccbc65e7317b96b1efd998f11d5f6a5d3cb6b87b6801d006de2"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/specutil/releases/download/v0.2.0/specutil_0.2.0_linux_arm64.tar.gz"
-      sha256 "2b14d3abcd987e830721421e8914094956e3d832b3d282e7bd0551f33743c943"
+      url "https://github.com/roshbhatia/specutil/releases/download/v0.3.0/specutil_0.3.0_linux_arm64.tar.gz"
+      sha256 "693ddc010e34bb63924e985e46235503e52b8efc47b7df24d565af050fa5cfe7"
     end
     on_intel do
-      url "https://github.com/roshbhatia/specutil/releases/download/v0.2.0/specutil_0.2.0_linux_amd64.tar.gz"
-      sha256 "71013def6b1da884b459c1150dd7074940e7929a7c3616362c7c8a4f1a4b31f4"
+      url "https://github.com/roshbhatia/specutil/releases/download/v0.3.0/specutil_0.3.0_linux_amd64.tar.gz"
+      sha256 "f2e7256b207029e5eaa134b795b9c202ababd4b1e87e6297bb2f833333c8868f"
     end
   end
 

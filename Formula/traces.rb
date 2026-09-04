@@ -6,22 +6,22 @@ class Traces < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.5.1/traces_0.5.1_darwin_arm64.tar.gz"
-      sha256 "875b53fdc0b2131ea7fecb3070954e1073be39ccd6b049d5ff1374a8cd5ded8c"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_darwin_arm64.tar.gz"
+      sha256 "15676fbbc191e605d0dc7e6e85c81a9ac528333be5722f1af2d3f385b6d4055b"
     end
     on_intel do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.5.1/traces_0.5.1_darwin_amd64.tar.gz"
-      sha256 "fa9704c6caa88b7b9cc8d9703deca4fa682765b1c2cf83f452a3f2dd958a9e5f"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_darwin_amd64.tar.gz"
+      sha256 "2144cb683680458a9539633874f89f3ce7eda401649b93347af5755fb745d490"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.5.1/traces_0.5.1_linux_arm64.tar.gz"
-      sha256 "bf99bdc1c5a380e4e6a461da64e39c354ca55a61194448e2f6c04133ac4f8ee2"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_linux_arm64.tar.gz"
+      sha256 "39b393a92171f2a129d6c9e1c9b650cf139c72fd7fe6f17b7c56c34627494135"
     end
     on_intel do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.5.1/traces_0.5.1_linux_amd64.tar.gz"
-      sha256 "878d9d758728eaf750431e149f5a30e01c293ffbb2a72c2e968c994606b4360b"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_linux_amd64.tar.gz"
+      sha256 "d4b954217dbbb0634f74773772ded3ef84961bb582104a247bda5142360e7d58"
     end
   end
 

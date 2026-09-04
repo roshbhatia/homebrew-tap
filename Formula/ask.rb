@@ -6,22 +6,22 @@ class Ask < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.4.0/ask_0.4.0_darwin_arm64.tar.gz"
-      sha256 "22ddf83dc13c9c6e9de4d1b6e14e9a44d3f6956e49e7f0c52cc1ff35fd347ee8"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_darwin_arm64.tar.gz"
+      sha256 "0feffc6768ed5365021b60ef18d6434079951590a158573125097d88c8cece85"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.4.0/ask_0.4.0_darwin_amd64.tar.gz"
-      sha256 "240642c46a91a7003332d3adf94035143cf32047d697d9ec7ef05abb4e8fe061"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_darwin_amd64.tar.gz"
+      sha256 "df37cf5dc16d12e66401a8e24b84ececc89afa6ff13c83d32c31c6a85372e835"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.4.0/ask_0.4.0_linux_arm64.tar.gz"
-      sha256 "f6c5bab3ec6a94ef3e216f6b8e52bed243ea6dabf083edaa2eabc4cffe419677"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_linux_arm64.tar.gz"
+      sha256 "e4043835bf97cdc92827d40b884c959b78706a5e4b9ed9b4bdc7fb741ac54950"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.4.0/ask_0.4.0_linux_amd64.tar.gz"
-      sha256 "73ca645e5b1f551b7ecab673777975d8f0932a4580be38c433b189e1099d1e3f"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_linux_amd64.tar.gz"
+      sha256 "6f2fee5a1c4890826d15f9a7f61182eb7ac293d82e913e7a10aa90f5c8950794"
     end
   end
 

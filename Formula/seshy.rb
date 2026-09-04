@@ -6,22 +6,22 @@ class Seshy < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/roshbhatia/seshy/releases/download/v4.0.0/seshy_4.0.0_darwin_arm64.tar.gz"
-      sha256 "3af6d5222a2920124510d0ba885f25ed2cf05b7fe5a6fe87a1425d154ee3c67c"
+      url "https://github.com/roshbhatia/seshy/releases/download/v4.1.0/seshy_4.1.0_darwin_arm64.tar.gz"
+      sha256 "5053b6ffc0b2fdcd33b90033bf7f58839eb747cece337649ba28b224891335d0"
     end
     on_intel do
-      url "https://github.com/roshbhatia/seshy/releases/download/v4.0.0/seshy_4.0.0_darwin_amd64.tar.gz"
-      sha256 "15c0eb4ad7ac4696b3b37f5db58b235eee22e02b05d46f1b723705dafabfe54e"
+      url "https://github.com/roshbhatia/seshy/releases/download/v4.1.0/seshy_4.1.0_darwin_amd64.tar.gz"
+      sha256 "86cf02af01b3f2209331f1910dbb8283a2187df9cd91219c6fc6b1dd3142ed7a"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/seshy/releases/download/v4.0.0/seshy_4.0.0_linux_arm64.tar.gz"
-      sha256 "2f151fc4bd660cb7fd78928a04f977cf2768d3df23423d2638fa0db85ea5068f"
+      url "https://github.com/roshbhatia/seshy/releases/download/v4.1.0/seshy_4.1.0_linux_arm64.tar.gz"
+      sha256 "f439ba27b6f82f81122794b973f7f798adfb8513765ef0b8bc074ab93ae4d658"
     end
     on_intel do
-      url "https://github.com/roshbhatia/seshy/releases/download/v4.0.0/seshy_4.0.0_linux_amd64.tar.gz"
-      sha256 "4d98777f81973875ba2561bb8bd271138b317e012b632beb43120e276bb2ad0f"
+      url "https://github.com/roshbhatia/seshy/releases/download/v4.1.0/seshy_4.1.0_linux_amd64.tar.gz"
+      sha256 "d1f011fe60a17e197755ed017927eb02275e471922190af0c57d9443dc62ecaa"
     end
   end
 
