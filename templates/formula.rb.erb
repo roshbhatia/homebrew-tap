@@ -28,7 +28,7 @@ class <%= package.fetch("class_name") %> < Formula
     zsh_completion.install "#{archive_root}/share/zsh/site-functions/_<%= package.fetch("binary") %>"
     fish_completion.install "#{archive_root}/share/fish/vendor_completions.d/<%= package.fetch("binary") %>.fish"
     (share/"nushell/vendor/autoload").install "#{archive_root}/share/nushell/vendor/autoload/<%= package.fetch("binary") %>.nu"
-    (share/"<%= package.fetch("name") %>").install Dir["#{archive_root}/share/<%= package.fetch("name") %>/*"]
+    pkgshare.install Dir["#{archive_root}/share/<%= package.fetch("name") %>/*"]
 <% else -%>
     bin.install <%= package.fetch("binary").dump %>
 <% if package["completions"] == "generated" -%>

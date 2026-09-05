@@ -2,7 +2,6 @@
 class Orc < Formula
   desc "Provider-neutral control plane for agent workflows"
   homepage "https://github.com/roshbhatia/orc"
-  version "0.10.0"
   license "MIT"
 
   on_macos do
@@ -35,7 +34,7 @@ class Orc < Formula
     zsh_completion.install "#{archive_root}/share/zsh/site-functions/_orc"
     fish_completion.install "#{archive_root}/share/fish/vendor_completions.d/orc.fish"
     (share/"nushell/vendor/autoload").install "#{archive_root}/share/nushell/vendor/autoload/orc.nu"
-    (share/"orc").install Dir["#{archive_root}/share/orc/*"]
+    pkgshare.install Dir["#{archive_root}/share/orc/*"]
   end
 
   test do
