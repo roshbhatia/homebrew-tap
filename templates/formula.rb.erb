@@ -28,8 +28,8 @@ class <%= package.fetch("class_name") %> < Formula
 
   def install
 <% if package["archive_root"] -%>
-    archive_root = Dir[<%= package.fetch("archive_root").gsub("%{version}", release.fetch("version")).dump %>].find { |path| File.directory?(path) }
-    odie "release archive has no <%= package.fetch("name") %> root" unless archive_root
+    archive_root = Dir[<%= package.fetch("archive_root").gsub("%{version}", release.fetch("version")).dump %>]
+                   .find { |path| File.directory?(path) } || buildpath
 
     bin.install "#{archive_root}/bin/<%= package.fetch("binary") %>"
     bash_completion.install "#{archive_root}/share/bash-completion/completions/<%= package.fetch("binary") %>"

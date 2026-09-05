@@ -57,7 +57,7 @@ class UpdateTest < Minitest::Test
     assert_match(/on_macos do\n    depends_on arch: :arm64\n\n    on_arm do/, formula)
     refute_includes formula, "orc_#{version}_darwin_amd64.tar.gz"
     assert_includes formula, %(archive_root = Dir["orc_#{version}_*_*"])
-    assert_includes formula, ".find { |path| File.directory?(path) }"
+    assert_includes formula, ".find { |path| File.directory?(path) } || buildpath"
     assert_includes formula, %(bin.install "\#{archive_root}/bin/orc")
 
     FIXTURE.fetch("archives").each do |archive|

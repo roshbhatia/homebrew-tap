@@ -26,8 +26,8 @@ class Orc < Formula
   end
 
   def install
-    archive_root = Dir["orc_0.10.2_*_*"].find { |path| File.directory?(path) }
-    odie "release archive has no orc root" unless archive_root
+    archive_root = Dir["orc_0.10.2_*_*"]
+                   .find { |path| File.directory?(path) } || buildpath
 
     bin.install "#{archive_root}/bin/orc"
     bash_completion.install "#{archive_root}/share/bash-completion/completions/orc"
