@@ -6,27 +6,27 @@ class Orc < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.10.0/orc_0.10.0_darwin_arm64.tar.gz"
-      sha256 "4af14a1545f165525a535f9d9e7db5fe0b782f6177ed9db01458449679477f5c"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.10.1/orc_0.10.1_darwin_arm64.tar.gz"
+      sha256 "953cb3d1254b9586380ed7494b65f83b54681977c4bf62c3aa590e4583a4c926"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.10.0/orc_0.10.0_darwin_amd64.tar.gz"
-      sha256 "4f367dae5d68b795a55c761f85e09d73c0f7b0109e7c32fea8df0c244375649b"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.10.1/orc_0.10.1_darwin_amd64.tar.gz"
+      sha256 "0e16d38937f361db12385a759d558bad58cb79e0a29fe0f4cefea38ebf6b2a01"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.10.0/orc_0.10.0_linux_arm64.tar.gz"
-      sha256 "b0ea47dc5962c63462d67b7e9ca62ef19c7e139dfb2a4a300a8a833d3fe81739"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.10.1/orc_0.10.1_linux_arm64.tar.gz"
+      sha256 "e186d0f798ae0920f8ca10212c70aeaa4f4a4894665ae7b045768a265f73b99d"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.10.0/orc_0.10.0_linux_amd64.tar.gz"
-      sha256 "e6fe6493df94b3381001df010d62e81e2fb50c557a13037b1109c8cbe0aff34e"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.10.1/orc_0.10.1_linux_amd64.tar.gz"
+      sha256 "f280d5f494b1d7c01c139fb01c887bf6c9bef88fda27d517c1cee496212aa06f"
     end
   end
 
   def install
-    archive_root = Dir["orc_0.10.0_*_*"].find { |path| File.directory?(path) }
+    archive_root = Dir["orc_0.10.1_*_*"].find { |path| File.directory?(path) }
     odie "release archive has no orc root" unless archive_root
 
     bin.install "#{archive_root}/bin/orc"
