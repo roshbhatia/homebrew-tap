@@ -13,12 +13,12 @@ ROOT = Pathname.new(__dir__).parent
 FORMULAE = ROOT.join("Formula")
 TARGETS = {
   "macos" => {
-    "arm" => { "os" => "darwin", "arch" => "arm64" },
-    "intel" => { "os" => "darwin", "arch" => "amd64" }
+    "arm" => { "os" => "darwin", "arch" => "arm64", "requirement" => "arm64" },
+    "intel" => { "os" => "darwin", "arch" => "amd64", "requirement" => "x86_64" }
   },
   "linux" => {
-    "arm" => { "os" => "linux", "arch" => "arm64" },
-    "intel" => { "os" => "linux", "arch" => "amd64" }
+    "arm" => { "os" => "linux", "arch" => "arm64", "requirement" => "arm64" },
+    "intel" => { "os" => "linux", "arch" => "amd64", "requirement" => "x86_64" }
   }
 }.freeze
 
@@ -153,8 +153,10 @@ def render_formula(github, package, release, template)
     architectures.transform_values do |target|
       archive = archive_name(package, version, target)
       artifact(github, package, assets, checksums, archive)
+        .merge("requirement" => target.fetch("requirement"))
     end
   end
+  fallback_artifact = artifacts_by_system.values.find(&:one?)&.values&.first
   package = package.merge("class_name" => formula_class_name(package.fetch("name")))
   release = { "version" => version }
   context = binding

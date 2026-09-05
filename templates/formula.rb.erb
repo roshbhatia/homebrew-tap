@@ -2,6 +2,10 @@
 class <%= package.fetch("class_name") %> < Formula
   desc <%= package.fetch("description").dump %>
   homepage <%= package.fetch("homepage").dump %>
+<% if fallback_artifact -%>
+  url <%= fallback_artifact.fetch("url").dump %>
+  sha256 <%= fallback_artifact.fetch("sha256").dump %>
+<% end -%>
 <% if package["explicit_version"] -%>
   version <%= release.fetch("version").dump %>
 <% end -%>
@@ -9,6 +13,10 @@ class <%= package.fetch("class_name") %> < Formula
 
 <% systems.each do |system, architectures| -%>
   on_<%= system %> do
+<% if architectures.one? -%>
+    depends_on arch: :<%= architectures.values.first.fetch("requirement") %>
+
+<% end -%>
 <% architectures.each do |architecture, artifact| -%>
     on_<%= architecture %> do
       url <%= artifact.fetch("url").dump %>

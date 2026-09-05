@@ -2,9 +2,13 @@
 class Orc < Formula
   desc "Provider-neutral control plane for agent workflows"
   homepage "https://github.com/roshbhatia/orc"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.10.2/orc_0.10.2_darwin_arm64.tar.gz"
+  sha256 "64cb1fe958099e334d695796d329400420e5f6ab73c33847eb840752d4b0c43b"
   license "MIT"
 
   on_macos do
+    depends_on arch: :arm64
+
     on_arm do
       url "https://github.com/roshbhatia/orc/releases/download/v0.10.2/orc_0.10.2_darwin_arm64.tar.gz"
       sha256 "64cb1fe958099e334d695796d329400420e5f6ab73c33847eb840752d4b0c43b"

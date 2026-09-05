@@ -53,6 +53,8 @@ class UpdateTest < Minitest::Test
     expected_archives.each do |archive|
       assert_includes formula, "https://github.com/roshbhatia/orc/releases/download/v#{version}/#{archive}"
     end
+    assert_match(/homepage .*\n  url .*darwin_arm64.*\n  sha256 .*\n  license/, formula)
+    assert_match(/on_macos do\n    depends_on arch: :arm64\n\n    on_arm do/, formula)
     refute_includes formula, "orc_#{version}_darwin_amd64.tar.gz"
     assert_includes formula, %(archive_root = Dir["orc_#{version}_*_*"])
     assert_includes formula, ".find { |path| File.directory?(path) }"
