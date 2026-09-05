@@ -1,15 +1,12 @@
-# Contract copied from roshbhatia/orc .github/workflows/release.yml at 6ea66ac.
-version: 0.10.0
+# Contract copied from roshbhatia/orc .github/workflows/release.yml at 6e67568.
+version: 0.10.2
 archives:
-  - name: orc_0.10.0_darwin_arm64.tar.gz
-    root: orc_0.10.0_darwin_arm64
-    binary: orc_0.10.0_darwin_arm64/bin/orc
-  - name: orc_0.10.0_darwin_amd64.tar.gz
-    root: orc_0.10.0_darwin_amd64
-    binary: orc_0.10.0_darwin_amd64/bin/orc
-  - name: orc_0.10.0_linux_arm64.tar.gz
-    root: orc_0.10.0_linux_arm64
-    binary: orc_0.10.0_linux_arm64/bin/orc
-  - name: orc_0.10.0_linux_amd64.tar.gz
-    root: orc_0.10.0_linux_amd64
-    binary: orc_0.10.0_linux_amd64/bin/orc
+  - name: orc_0.10.2_darwin_arm64.tar.gz
+    root: orc_0.10.2_darwin_arm64
+    binary: orc_0.10.2_darwin_arm64/bin/orc
+  - name: orc_0.10.2_linux_arm64.tar.gz
+    root: orc_0.10.2_linux_arm64
+    binary: orc_0.10.2_linux_arm64/bin/orc
+  - name: orc_0.10.2_linux_amd64.tar.gz
+    root: orc_0.10.2_linux_amd64
+    binary: orc_0.10.2_linux_amd64/bin/orc

@@ -38,7 +38,7 @@ class UpdateTest < Minitest::Test
     }
 
     expected_archives = FIXTURE.fetch("archives").map { |archive| archive.fetch("name") }
-    actual_archives = TARGETS.values.flat_map(&:values).map do |target|
+    actual_archives = targets_for(package).values.flat_map(&:values).map do |target|
       archive_name(package, version, target)
     end
     assert_equal expected_archives.sort, actual_archives.sort
@@ -53,6 +53,7 @@ class UpdateTest < Minitest::Test
     expected_archives.each do |archive|
       assert_includes formula, "https://github.com/roshbhatia/orc/releases/download/v#{version}/#{archive}"
     end
+    refute_includes formula, "orc_#{version}_darwin_amd64.tar.gz"
     assert_includes formula, %(archive_root = Dir["orc_#{version}_*_*"])
     assert_includes formula, ".find { |path| File.directory?(path) }"
     assert_includes formula, %(bin.install "\#{archive_root}/bin/orc")

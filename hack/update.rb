@@ -82,6 +82,21 @@ def archive_name(package, version, target)
   end
 end
 
+def targets_for(package)
+  configured = package["targets"]
+  return TARGETS unless configured
+
+  configured.to_h do |system, architectures|
+    available = TARGETS.fetch(system) { raise "#{package.fetch("name")}: unknown target system #{system}" }
+    selected = architectures.to_h do |architecture|
+      [architecture, available.fetch(architecture) do
+        raise "#{package.fetch("name")}: unknown #{system} architecture #{architecture}"
+      end]
+    end
+    [system, selected]
+  end
+end
+
 def assets_by_name(release)
   release.fetch("assets").to_h { |asset| [asset.fetch("name"), asset] }
 end
@@ -90,7 +105,7 @@ def complete_release(github, package)
   github.releases(package.fetch("repository")).find do |release|
     version = release.fetch("tag_name").delete_prefix("v")
     assets = assets_by_name(release)
-    archives = TARGETS.values.flat_map(&:values).map do |target|
+    archives = targets_for(package).values.flat_map(&:values).map do |target|
       archive_name(package, version, target)
     end
     checksums = if package.fetch("checksum") == "sidecar"
@@ -134,7 +149,7 @@ def render_formula(github, package, release, template)
   version = release.fetch("tag_name").delete_prefix("v")
   assets = assets_by_name(release)
   checksums = checksum_map(github, package, assets)
-  artifacts_by_system = TARGETS.transform_values do |architectures|
+  artifacts_by_system = targets_for(package).transform_values do |architectures|
     architectures.transform_values do |target|
       archive = archive_name(package, version, target)
       artifact(github, package, assets, checksums, archive)
@@ -176,7 +191,7 @@ if $PROGRAM_NAME == __FILE__
         skipped << package.fetch("name")
         next
       end
-      abort "#{package.fetch("name")}: no release contains all four platform archives"
+      abort "#{package.fetch("name")}: no release contains all configured platform archives"
     end
 
     destination = FORMULAE.join("#{package.fetch("name")}.rb")

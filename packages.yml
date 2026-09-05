@@ -38,6 +38,9 @@ packages:
     archive: orc_%{version}_%{os}_%{arch}.tar.gz
     checksum: sidecar
     archive_root: orc_%{version}_*_*
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
 
   - name: specutil
     repository: roshbhatia/specutil
