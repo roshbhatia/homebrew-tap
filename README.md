@@ -6,15 +6,9 @@ Install the command-line tools on macOS or Linux:
 brew install roshbhatia/tap/ask
 brew install roshbhatia/tap/changes
 brew install roshbhatia/tap/traces
+brew install roshbhatia/tap/orc
 brew install roshbhatia/tap/specutil
 brew install roshbhatia/tap/seshy
-```
-
-Orc will join this list after its release contains binaries for macOS and Linux
-on both Intel and Arm. After that release finishes, add it with one command:
-
-```sh
-GH_TOKEN="$(gh auth token)" ./hack/update.rb orc
 ```
 
 The formulae install Bash, Zsh, Fish, and Nushell completions. They use the

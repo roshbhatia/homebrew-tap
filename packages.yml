@@ -39,7 +39,6 @@ packages:
     checksum: sidecar
     archive_root: orc_%{version}_*_*
     explicit_version: true
-    pending: true
 
   - name: specutil
     repository: roshbhatia/specutil
