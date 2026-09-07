@@ -6,22 +6,22 @@ class Changes < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.9.1/changes_0.9.1_darwin_arm64.tar.gz"
-      sha256 "fc84320ab4ea9f6da4da168424bad40eef751bd272d3c35fcb3c137585c73801"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_darwin_arm64.tar.gz"
+      sha256 "21cd3d5333c9de991710a3a0aff40bbc1e4b80311da76222cc0745c61d43a084"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.9.1/changes_0.9.1_darwin_amd64.tar.gz"
-      sha256 "f05afec6be5831538aca0b050a039febbc7bd5b6c1786a1bbad4119ce760420e"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_darwin_amd64.tar.gz"
+      sha256 "064bdeade51b6a2af01b797a4ddca32d63a6b04e23867d03a3c732949471b177"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.9.1/changes_0.9.1_linux_arm64.tar.gz"
-      sha256 "1c67bbecb2afd4fe4975d121b2c2b6e5c6d1bf9b2a965ec2b85ef73c446da701"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_linux_arm64.tar.gz"
+      sha256 "cca265d60bbcd1a17659bcf72bed9be01a970726f06c8d1c5f813ba8944d8be9"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.9.1/changes_0.9.1_linux_amd64.tar.gz"
-      sha256 "c4e1cc56e407ec853c620941d2435ca55efd0e26395c2aa5b95878a4cefb1d7c"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_linux_amd64.tar.gz"
+      sha256 "6627facca7837653f83239d0cd3a0d67270835088aa51adb1349205c295a631e"
     end
   end
 
