@@ -49,7 +49,7 @@ class GitHub
 
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
-    request["Accept"] = "application/vnd.github+json"
+    request["Accept"] = uri.hostname == "api.github.com" ? "application/vnd.github+json" : "*/*"
     if uri.hostname == "api.github.com" && @token && !@token.empty?
       request["Authorization"] = "Bearer #{@token}"
     end

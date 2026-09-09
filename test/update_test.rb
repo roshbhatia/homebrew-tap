@@ -15,6 +15,29 @@ class FakeGitHub
 end
 
 class UpdateTest < Minitest::Test
+  def test_downloads_use_asset_headers_and_keep_tokens_on_the_api_host
+    requests = []
+    http = Object.new
+    http.define_singleton_method(:request) do |request|
+      requests << request
+      response = Net::HTTPOK.new("1.1", "200", "OK")
+      response.define_singleton_method(:body) { "ok" }
+      response
+    end
+    transport = lambda do |*_, **_, &block|
+      block.call(http)
+    end
+    Net::HTTP.stub(:start, transport) do
+      github = GitHub.new("test-token")
+      github.text("https://api.github.com/repos/example/tool/releases")
+      github.text("https://github.com/example/tool/releases/download/v1/tool.sha256")
+    end
+    assert_equal "application/vnd.github+json", requests[0]["Accept"]
+    assert_equal "Bearer test-token", requests[0]["Authorization"]
+    assert_equal "*/*", requests[1]["Accept"]
+    assert_nil requests[1]["Authorization"]
+  end
+
   FIXTURE = YAML.safe_load(
     ROOT.join("test/fixtures/orc-release.yml").read,
     permitted_classes: [],
