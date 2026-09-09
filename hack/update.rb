@@ -147,6 +147,7 @@ def artifact(github, package, assets, checksums, archive)
 end
 
 def render_formula(github, package, release, template)
+  package = package.merge("description" => package.fetch("description").sub(/\A[a-z]/, &:upcase))
   if package["python_script"] || package["python_wheels"]
     package = package.merge("dependencies" => (package.fetch("dependencies", []) + ["uv"]).uniq)
   end

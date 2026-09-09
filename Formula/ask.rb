@@ -4,26 +4,26 @@
 class Ask < Formula
   desc "Query agent harnesses through provider-defined adapters"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.1/ask_0.7.1_darwin_arm64.tar.gz"
-  sha256 "0ea7dba0248bd5f197f66f0f2f644b7b12577302fe517483f34a932c60112c66"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_darwin_arm64.tar.gz"
+  sha256 "dd4f798426a97d4cecbaf3a669ce519966a9f90137e43c63ac2b5277b2f9da4a"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.1/ask_0.7.1_darwin_arm64.tar.gz"
-      sha256 "0ea7dba0248bd5f197f66f0f2f644b7b12577302fe517483f34a932c60112c66"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_darwin_arm64.tar.gz"
+      sha256 "dd4f798426a97d4cecbaf3a669ce519966a9f90137e43c63ac2b5277b2f9da4a"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.1/ask_0.7.1_linux_arm64.tar.gz"
-      sha256 "35f3f49b741bdc57a6a8fd411d3fd55017d4b9bb3417deeec43637a961892a42"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_linux_arm64.tar.gz"
+      sha256 "b10631d9321534193ee56c3892d280c001521636087e3d720eb760acdfbf64a5"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.1/ask_0.7.1_linux_amd64.tar.gz"
-      sha256 "722d07b3ad21b9bf92c85e298f5e4ec557aecb314d70d709c27b34ad31187f40"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_linux_amd64.tar.gz"
+      sha256 "59290630c0006f51d174c936e1252b95124c7830f3186265533c3785d6779b9e"
     end
   end
 
