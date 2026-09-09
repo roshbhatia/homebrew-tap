@@ -21,6 +21,9 @@ Core wrappers add that directory to `XDG_DATA_DIRS` and preserve the caller's ot
 Provider packages include declared runtime dependencies. Some agent CLIs and desktop applications need a separate installation and authentication.
 Each extra's README lists those requirements.
 
+Before installing `orc-provider-zmx` or `orc-all`, run `brew tap neurosnap/tap`.
+Homebrew requires this explicit step to find the Zmx dependency.
+
 New provider formulae appear when the utility publishes a release with its package index and all platform archives.
 Formula generation rejects a partial indexed release.
 
