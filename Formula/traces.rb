@@ -4,26 +4,26 @@
 class Traces < Formula
   desc "Inspect agent activity as a trace tree"
   homepage "https://github.com/roshbhatia/traces"
-  url "https://github.com/roshbhatia/traces/releases/download/v0.11.1/traces_0.11.1_darwin_arm64.tar.gz"
-  sha256 "e86c0b915e04787d6369ee96e8cba8bdfb75ee9a385bc73bae6aee678d0b731e"
+  url "https://github.com/roshbhatia/traces/releases/download/v0.11.2/traces_0.11.2_darwin_arm64.tar.gz"
+  sha256 "809d4e148c2148802be53d60c6d8833612ef00fd3862d90b42a85e1fb21c27de"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.11.1/traces_0.11.1_darwin_arm64.tar.gz"
-      sha256 "e86c0b915e04787d6369ee96e8cba8bdfb75ee9a385bc73bae6aee678d0b731e"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.11.2/traces_0.11.2_darwin_arm64.tar.gz"
+      sha256 "809d4e148c2148802be53d60c6d8833612ef00fd3862d90b42a85e1fb21c27de"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.11.1/traces_0.11.1_linux_arm64.tar.gz"
-      sha256 "f708a876d1c0c012944b38f1826e968527be710a59827b5c2a0289311c5e9e66"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.11.2/traces_0.11.2_linux_arm64.tar.gz"
+      sha256 "4c2d9557a11ff54bba73d10ed8e77cf9ba43aa0aa509fe2a14ea1277ebd51245"
     end
     on_intel do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.11.1/traces_0.11.1_linux_amd64.tar.gz"
-      sha256 "2d4cfcc2620c2c0ef062f78b1b3a37a7e905e973290a6dc620c3e1e38f5ecafe"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.11.2/traces_0.11.2_linux_amd64.tar.gz"
+      sha256 "e340cd9bf7ecdae116920baf262196f5d5559b2d75d242eaf9b62cd548662aa7"
     end
   end
 
