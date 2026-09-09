@@ -229,7 +229,7 @@ if $PROGRAM_NAME == __FILE__
                []
              else
                [package.merge("name" => "#{package.fetch("name")}-all",
-                              "description" => "#{package.fetch("name")} with all provider packages",
+                              "description" => "All providers for #{package.fetch("name")}",
                               "bundle" => [package.fetch("name"), *providers.map { |provider| provider.fetch("name") }])]
              end
     [package, *providers, *bundle].map { |entry| [entry, release] }
