@@ -35,5 +35,7 @@ jobs:
           done
       - name: Install and test the process provider
         run: |
+          brew tap neurosnap/tap
+          brew trust --formula neurosnap/tap/zmx
           brew install --formula roshbhatia/tap/orc-provider-zmx
           brew test roshbhatia/tap/orc-provider-zmx
