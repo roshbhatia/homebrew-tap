@@ -4,8 +4,8 @@
 class OrcProviderWezterm < Formula
   desc "Preview a terminal launch for the repair task"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_wezterm_0.12.2_darwin_arm64.tar.gz"
-  sha256 "06d275f29a1a90b4c4cadd907824a12ec1956c2f4603a48656a1c2e18be08726"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_wezterm_0.12.3_darwin_arm64.tar.gz"
+  sha256 "a8d4c78138918e93abb3da9aebd1b4168446d3b198a3b1e6c3ed6c2f863df6a5"
   license "MIT"
 
   depends_on "bash"
@@ -16,18 +16,18 @@ class OrcProviderWezterm < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_wezterm_0.12.2_darwin_arm64.tar.gz"
-      sha256 "06d275f29a1a90b4c4cadd907824a12ec1956c2f4603a48656a1c2e18be08726"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_wezterm_0.12.3_darwin_arm64.tar.gz"
+      sha256 "a8d4c78138918e93abb3da9aebd1b4168446d3b198a3b1e6c3ed6c2f863df6a5"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_wezterm_0.12.2_linux_arm64.tar.gz"
-      sha256 "cbf2c9ff9c3f97c2ffef2ebfa433f490bacf82eb1db13fc51cc0525c20812cd0"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_wezterm_0.12.3_linux_arm64.tar.gz"
+      sha256 "8ec4c73a06bad8bc300b6f5cfaed9c2959f4cdf7a5fc76da37cf8ca7cb4a3f36"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_wezterm_0.12.2_linux_amd64.tar.gz"
-      sha256 "4455f84df782adcfcd2b0ec9a125044b0b559a06a1a1b52a13fe041c4c389b8b"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_wezterm_0.12.3_linux_amd64.tar.gz"
+      sha256 "fed9a9a966d3a0eb7102c6c3fae04a60c492f96cdf54fb0cb807b6647026948e"
     end
   end
 

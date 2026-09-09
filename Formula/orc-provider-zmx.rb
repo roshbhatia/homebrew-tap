@@ -6,8 +6,8 @@ class OrcProviderZmx < Formula
 
   desc "Prepare a persistent repair session"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_zmx_0.12.2_darwin_arm64.tar.gz"
-  sha256 "1ba99f5ac7233e65b94ab853933ada36e68f3c3c36d61b547e9b8ba1ce383c41"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_zmx_0.12.3_darwin_arm64.tar.gz"
+  sha256 "6407492509d41980caee04761022db84ebccd1845ab964f9aff9c95e0d3f7898"
   license "MIT"
 
   depends_on "bash"
@@ -15,26 +15,31 @@ class OrcProviderZmx < Formula
   depends_on "jq"
   depends_on "neurosnap/tap/zmx"
   depends_on "python@3.13"
+  depends_on "uv"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_zmx_0.12.2_darwin_arm64.tar.gz"
-      sha256 "1ba99f5ac7233e65b94ab853933ada36e68f3c3c36d61b547e9b8ba1ce383c41"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_zmx_0.12.3_darwin_arm64.tar.gz"
+      sha256 "6407492509d41980caee04761022db84ebccd1845ab964f9aff9c95e0d3f7898"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_zmx_0.12.2_linux_arm64.tar.gz"
-      sha256 "4cb2b1de39ca20629211df2cf07f3569ebf8c4ce77ed0ba22634ca96ee0e9712"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_zmx_0.12.3_linux_arm64.tar.gz"
+      sha256 "fb8e05ba43d6096fef47b47b49a0d9d705b1540981cee46e58f1e7a6f8bda438"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_provider_zmx_0.12.2_linux_amd64.tar.gz"
-      sha256 "c6653c109b3d408b5731f9cfa75ef19801cf15d9462aded5909f1d161d7d92ee"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_zmx_0.12.3_linux_amd64.tar.gz"
+      sha256 "50ba07ff397d1b750f81d0055006036d448cf2844bc49fcbd25503918f9677d3"
     end
   end
 
+  resource "wheel" do
+    url "https://files.pythonhosted.org/packages/8a/98/2d9906746cdc6a6ef809ae6338005b3f21bb568bea3165cfc6a243fdc25c/wheel-0.45.1.tar.gz"
+    sha256 "661e1abd9198507b1409a20c02106d9670b2576e916d58f520316666abca6729"
+  end
   resource "psutil" do
     url "https://files.pythonhosted.org/packages/2a/80/336820c1ad9286a4ded7e845b2eccfcb27851ab8ac6abece774a6ff4d3de/psutil-7.0.0.tar.gz"
     sha256 "7be9c3eba38beccb6495ea33afd982a44074b78f28c434a1f51cc07fd315c456"
@@ -47,9 +52,20 @@ class OrcProviderZmx < Formula
     (libexec/"lib").install "lib/process_tree.py"
     venv = virtualenv_create(libexec/"venv", formula_opt_bin("python@3.13")/"python3.13")
     venv.pip_install resources
+    site_packages = libexec/"venv/lib/python3.13/site-packages"
+    (libexec/"wheels").mkpath
+    wheel_source = buildpath/"wheels/psutil"
+    wheel_source.mkpath
+    wheel_files = [site_packages/"psutil", *Dir[site_packages/"psutil-*.dist-info"]]
+    wheel_complete = wheel_files.length == 2 && wheel_files.all? { |file| File.exist?(file) }
+    odie "Missing installed wheel metadata for psutil" unless wheel_complete
+    cp_r wheel_files, wheel_source
+    system libexec/"venv/bin/python", "-m", "wheel", "pack", wheel_source, "--dest-dir", libexec/"wheels"
     (libexec/"process-tree").write <<~SH
       #!/bin/sh
-      exec "#{libexec}/venv/bin/python" "#{libexec}/lib/process_tree.py" "$@"
+      exec "#{formula_opt_bin("uv")}/uv" run --offline --no-managed-python --no-python-downloads --no-project \\
+        --python "#{formula_opt_bin("python@3.13")}/python3.13" --no-index --find-links "#{libexec}/wheels" \\
+        --script "#{libexec}/lib/process_tree.py" "$@"
     SH
     (libexec/"process-tree").chmod 0755
     (bin/"orc-provider-zmx").write <<~SH
@@ -65,6 +81,7 @@ class OrcProviderZmx < Formula
   end
 
   test do
-    assert_path_exists bin/"orc-provider-zmx"
+    ENV["UV_CACHE_DIR"] = (testpath/"uv-cache").to_s
+    assert_match "inspect", shell_output("#{libexec}/process-tree --help")
   end
 end

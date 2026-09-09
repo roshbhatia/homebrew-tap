@@ -4,8 +4,8 @@
 class OrcAll < Formula
   desc "All providers for orc"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_0.12.2_darwin_arm64.tar.gz"
-  sha256 "96ced410e083dad4596609bdc4eb76a2ec7d56a26cd59169ddbc6ec6bf08527a"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_darwin_arm64.tar.gz"
+  sha256 "bdfa342bc61257a572db78f2f6f4cb2e40a3911e9ddb2f5de9ab41ea5514e6b7"
   license "MIT"
 
   depends_on "roshbhatia/tap/orc"
@@ -20,18 +20,18 @@ class OrcAll < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_0.12.2_darwin_arm64.tar.gz"
-      sha256 "96ced410e083dad4596609bdc4eb76a2ec7d56a26cd59169ddbc6ec6bf08527a"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_darwin_arm64.tar.gz"
+      sha256 "bdfa342bc61257a572db78f2f6f4cb2e40a3911e9ddb2f5de9ab41ea5514e6b7"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_0.12.2_linux_arm64.tar.gz"
-      sha256 "0b73433883450572dbea3331459dd5a225d0b6ccbdc641e5294f82a34c5fc4c2"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_linux_arm64.tar.gz"
+      sha256 "c659c6d666745464e63b57d206dc96e1e7c9f89c85ac08e9a1f0d1501750100d"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.2/orc_0.12.2_linux_amd64.tar.gz"
-      sha256 "2c541003a366a4677d37a3f678da9daf9e5007d9f1bde8f793fbcb65fe44ba0b"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_linux_amd64.tar.gz"
+      sha256 "d19d77bcbf43906c19d1c59d76fc340e93db1f709e0b0f4e2d66086fd33ba80d"
     end
   end
 
