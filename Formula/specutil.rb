@@ -34,6 +34,6 @@ class Specutil < Formula
   end
 
   test do
-    assert_match "specutil", shell_output("#{bin}/specutil --help")
+    assert_match "specutil", shell_output("#{bin}/specutil --help 2>&1")
   end
 end

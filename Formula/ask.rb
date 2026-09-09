@@ -2,38 +2,44 @@
 class Ask < Formula
   desc "Query agent harnesses through provider-defined adapters"
   homepage "https://github.com/roshbhatia/ask"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.7.0/ask_0.7.0_darwin_arm64.tar.gz"
+  sha256 "058240d8e51c841d02d285a02b5b2724623247821d5b8492b1221d098a449c3b"
   license "MIT"
 
   on_macos do
+    depends_on arch: :arm64
+
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_darwin_arm64.tar.gz"
-      sha256 "0feffc6768ed5365021b60ef18d6434079951590a158573125097d88c8cece85"
-    end
-    on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_darwin_amd64.tar.gz"
-      sha256 "df37cf5dc16d12e66401a8e24b84ececc89afa6ff13c83d32c31c6a85372e835"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.7.0/ask_0.7.0_darwin_arm64.tar.gz"
+      sha256 "058240d8e51c841d02d285a02b5b2724623247821d5b8492b1221d098a449c3b"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_linux_arm64.tar.gz"
-      sha256 "e4043835bf97cdc92827d40b884c959b78706a5e4b9ed9b4bdc7fb741ac54950"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.7.0/ask_0.7.0_linux_arm64.tar.gz"
+      sha256 "4f1512cd0986594a430385faf574316bc0d07e4756ef158d076fb397c8b2f5b9"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.5.0/ask_0.5.0_linux_amd64.tar.gz"
-      sha256 "6f2fee5a1c4890826d15f9a7f61182eb7ac293d82e913e7a10aa90f5c8950794"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.7.0/ask_0.7.0_linux_amd64.tar.gz"
+      sha256 "a4c6453b68e4c30c1b13ca33681628aee18de4dd120c21bad6ad65fed9ea45e9"
     end
   end
 
   def install
-    bin.install "ask"
-    generate_completions_from_executable(bin/"ask", "completion")
+    libexec.install "ask"
+    generate_completions_from_executable(libexec/"ask", "completion")
     nu_completion = buildpath/"ask.nu"
-    nu_completion.write Utils.safe_popen_read(bin/"ask", "completion", "nu")
+    nu_completion.write Utils.safe_popen_read(libexec/"ask", "completion", "nu")
     (share/"nushell/vendor/autoload").install nu_completion
+    (bin/"ask").write <<~SH
+      #!/bin/sh
+      export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+      exec "#{libexec}/ask" "$@"
+    SH
+    (bin/"ask").chmod 0755
   end
 
   test do
-    assert_match "ask", shell_output("#{bin}/ask --help")
+    assert_match "ask", shell_output("#{bin}/ask --help 2>&1")
   end
 end

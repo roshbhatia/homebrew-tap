@@ -34,6 +34,6 @@ class Seshy < Formula
   end
 
   test do
-    assert_match "sy", shell_output("#{bin}/sy --help")
+    assert_match "sy", shell_output("#{bin}/sy --help 2>&1")
   end
 end

@@ -2,38 +2,44 @@
 class Traces < Formula
   desc "Inspect agent activity as a trace tree"
   homepage "https://github.com/roshbhatia/traces"
+  url "https://github.com/roshbhatia/traces/releases/download/v0.11.0/traces_0.11.0_darwin_arm64.tar.gz"
+  sha256 "e552b8d431c66eacd822eb4e6b8e690bcb531229652ed3f4f6ded0f153d2f045"
   license "MIT"
 
   on_macos do
+    depends_on arch: :arm64
+
     on_arm do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_darwin_arm64.tar.gz"
-      sha256 "15676fbbc191e605d0dc7e6e85c81a9ac528333be5722f1af2d3f385b6d4055b"
-    end
-    on_intel do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_darwin_amd64.tar.gz"
-      sha256 "2144cb683680458a9539633874f89f3ce7eda401649b93347af5755fb745d490"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.11.0/traces_0.11.0_darwin_arm64.tar.gz"
+      sha256 "e552b8d431c66eacd822eb4e6b8e690bcb531229652ed3f4f6ded0f153d2f045"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_linux_arm64.tar.gz"
-      sha256 "39b393a92171f2a129d6c9e1c9b650cf139c72fd7fe6f17b7c56c34627494135"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.11.0/traces_0.11.0_linux_arm64.tar.gz"
+      sha256 "8ec11a882bc917ede988f8218c720c206c8ef7f95e0ade72156dc9ab25ad0127"
     end
     on_intel do
-      url "https://github.com/roshbhatia/traces/releases/download/v0.6.0/traces_0.6.0_linux_amd64.tar.gz"
-      sha256 "d4b954217dbbb0634f74773772ded3ef84961bb582104a247bda5142360e7d58"
+      url "https://github.com/roshbhatia/traces/releases/download/v0.11.0/traces_0.11.0_linux_amd64.tar.gz"
+      sha256 "de97275cbeb7831b8743ac2032b7bc63d9a803dd352be4ee0e188d59b13d3ec0"
     end
   end
 
   def install
-    bin.install "traces"
-    generate_completions_from_executable(bin/"traces", "completion")
+    libexec.install "traces"
+    generate_completions_from_executable(libexec/"traces", "completion")
     nu_completion = buildpath/"traces.nu"
-    nu_completion.write Utils.safe_popen_read(bin/"traces", "completion", "nu")
+    nu_completion.write Utils.safe_popen_read(libexec/"traces", "completion", "nu")
     (share/"nushell/vendor/autoload").install nu_completion
+    (bin/"traces").write <<~SH
+      #!/bin/sh
+      export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+      exec "#{libexec}/traces" "$@"
+    SH
+    (bin/"traces").chmod 0755
   end
 
   test do
-    assert_match "traces", shell_output("#{bin}/traces --help")
+    assert_match "traces", shell_output("#{bin}/traces --help 2>&1")
   end
 end

@@ -37,6 +37,6 @@ class Tether < Formula
   end
 
   test do
-    assert_match "tether", shell_output("#{bin}/tether --help")
+    assert_match "tether", shell_output("#{bin}/tether --help 2>&1")
   end
 end

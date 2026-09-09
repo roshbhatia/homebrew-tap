@@ -36,6 +36,6 @@ class AgentNotes < Formula
   end
 
   test do
-    assert_match "note", shell_output("#{bin}/note --help")
+    assert_match "note", shell_output("#{bin}/note --help 2>&1")
   end
 end

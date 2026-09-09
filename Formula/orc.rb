@@ -29,15 +29,21 @@ class Orc < Formula
     archive_root = Dir["orc_0.12.1_*_*"]
                    .find { |path| File.directory?(path) } || buildpath
 
-    bin.install "#{archive_root}/bin/orc"
+    libexec.install "#{archive_root}/bin/orc"
     bash_completion.install "#{archive_root}/share/bash-completion/completions/orc"
     zsh_completion.install "#{archive_root}/share/zsh/site-functions/_orc"
     fish_completion.install "#{archive_root}/share/fish/vendor_completions.d/orc.fish"
     (share/"nushell/vendor/autoload").install "#{archive_root}/share/nushell/vendor/autoload/orc.nu"
     pkgshare.install Dir["#{archive_root}/share/orc/*"]
+    (bin/"orc").write <<~SH
+      #!/bin/sh
+      export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+      exec "#{libexec}/orc" "$@"
+    SH
+    (bin/"orc").chmod 0755
   end
 
   test do
-    assert_match "orc", shell_output("#{bin}/orc --help")
+    assert_match "orc", shell_output("#{bin}/orc --help 2>&1")
   end
 end

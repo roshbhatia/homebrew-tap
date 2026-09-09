@@ -2,38 +2,44 @@
 class Changes < Formula
   desc "Review Git changes with symbol and call context"
   homepage "https://github.com/roshbhatia/changes"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.12.0/changes_0.12.0_darwin_arm64.tar.gz"
+  sha256 "c16d0af17783ce4feb617761fc8f0cd69df7d7592593235a9c29e24cb4a8de6e"
   license "MIT"
 
   on_macos do
+    depends_on arch: :arm64
+
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_darwin_arm64.tar.gz"
-      sha256 "21cd3d5333c9de991710a3a0aff40bbc1e4b80311da76222cc0745c61d43a084"
-    end
-    on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_darwin_amd64.tar.gz"
-      sha256 "064bdeade51b6a2af01b797a4ddca32d63a6b04e23867d03a3c732949471b177"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.12.0/changes_0.12.0_darwin_arm64.tar.gz"
+      sha256 "c16d0af17783ce4feb617761fc8f0cd69df7d7592593235a9c29e24cb4a8de6e"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_linux_arm64.tar.gz"
-      sha256 "cca265d60bbcd1a17659bcf72bed9be01a970726f06c8d1c5f813ba8944d8be9"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.12.0/changes_0.12.0_linux_arm64.tar.gz"
+      sha256 "e903248d958c47121cd74c198df45e8762045caafc1c1c60659bbc8e02ddc9ab"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.10.0/changes_0.10.0_linux_amd64.tar.gz"
-      sha256 "6627facca7837653f83239d0cd3a0d67270835088aa51adb1349205c295a631e"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.12.0/changes_0.12.0_linux_amd64.tar.gz"
+      sha256 "640e80f000c73d6268857d0e7fde41dd1929540b64e3d28e94291230fb312337"
     end
   end
 
   def install
-    bin.install "changes"
-    generate_completions_from_executable(bin/"changes", "completion")
+    libexec.install "changes"
+    generate_completions_from_executable(libexec/"changes", "completion")
     nu_completion = buildpath/"changes.nu"
-    nu_completion.write Utils.safe_popen_read(bin/"changes", "completion", "nu")
+    nu_completion.write Utils.safe_popen_read(libexec/"changes", "completion", "nu")
     (share/"nushell/vendor/autoload").install nu_completion
+    (bin/"changes").write <<~SH
+      #!/bin/sh
+      export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+      exec "#{libexec}/changes" "$@"
+    SH
+    (bin/"changes").chmod 0755
   end
 
   test do
-    assert_match "changes", shell_output("#{bin}/changes --help")
+    assert_match "changes", shell_output("#{bin}/changes --help 2>&1")
   end
 end
