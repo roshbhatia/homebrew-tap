@@ -3,16 +3,26 @@
 Install the command-line tools on macOS or Linux:
 
 ```sh
-brew install roshbhatia/tap/ask
 brew install roshbhatia/tap/changes
-brew install roshbhatia/tap/traces
-brew install roshbhatia/tap/orc
-brew install roshbhatia/tap/specutil
-brew install roshbhatia/tap/seshy
+brew install roshbhatia/tap/changes roshbhatia/tap/changes-provider-git-notes
+brew install roshbhatia/tap/changes-all
 ```
 
-The formulae install Bash, Zsh, Fish, and Nushell completions. They use the
-native release archive for the current operating system and architecture.
+The first command installs the core. The second adds one provider; name more packages to select several.
+The `-all` bundle depends on the core and every package in that release's extras index.
+It installs no duplicate copies of the binaries.
+
+The same choices apply to Ask, Gate, Orc, Seshy, Tether, and Traces.
+Agent-notes and Specutil have standalone formulae.
+The WezTerm zoxide adapter is `sysinit-wezterm-provider-zoxide`.
+
+Provider formulae install manifests under Homebrew's shared data directory.
+Core wrappers add that directory to `XDG_DATA_DIRS` and preserve the caller's other data directories.
+Provider packages include declared runtime dependencies. Some agent CLIs and desktop applications need a separate installation and authentication.
+Each extra's README lists those requirements.
+
+New provider formulae appear when the utility publishes a release with its package index and all platform archives.
+Formula generation rejects a partial indexed release.
 
 ## Maintenance
 

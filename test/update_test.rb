@@ -58,13 +58,63 @@ class UpdateTest < Minitest::Test
     refute_includes formula, "orc_#{version}_darwin_amd64.tar.gz"
     assert_includes formula, %(archive_root = Dir["orc_#{version}_*_*"])
     assert_includes formula, ".find { |path| File.directory?(path) } || buildpath"
-    assert_includes formula, %(bin.install "\#{archive_root}/bin/orc")
+    assert_includes formula, %(libexec.install "\#{archive_root}/bin/orc")
 
     FIXTURE.fetch("archives").each do |archive|
       assert_match(/\Aorc_#{Regexp.escape(version)}_(darwin|linux)_(arm64|amd64)\/bin\/orc\z/,
                    archive.fetch("binary"))
       assert_equal "#{archive.fetch("root")}/bin/orc", archive.fetch("binary")
     end
+  end
+
+  def test_provider_index_installs_shared_manifests
+    core = package_named("traces")
+    entry = {
+      "name" => "traces-provider-codex", "kind" => "provider",
+      "binary" => "traces-provider-codex", "archive" => "traces_provider_codex_%{version}_%{os}_%{arch}.tar.gz",
+      "share" => ["share/traces/providers/codex/provider.yaml"]
+    }
+    archives = targets_for(core).values.flat_map(&:values).map { |target| archive_name(entry, "1.0.0", target) }
+    assets = ["package-index.json", "checksums.txt", *archives].map { |name| {"name" => name, "browser_download_url" => name} }
+    github = FakeGitHub.new({
+      "package-index.json" => JSON.generate({"version" => 1, "packages" => [entry]}),
+      "checksums.txt" => archives.map { |name| "#{'a' * 64}  #{name}\n" }.join
+    })
+    release = {"tag_name" => "v1.0.0", "assets" => assets}
+    packages = provider_packages(github, core, release)
+    assert_equal [entry["name"]], packages.map { |package| package["name"] }
+    refute packages[0].key?("completions")
+    formula = render_formula(github, packages[0], release, ROOT.join("templates/formula.rb.erb").read)
+    assert_includes formula, '(share/"traces/providers/codex").install "share/traces/providers/codex/provider.yaml"'
+    assert_includes formula, 'bin.install "traces-provider-codex"'
+    assert_equal [], provider_packages(github, core, {"assets" => []})
+    assert_raises(RuntimeError) { provider_packages(github, core, release.merge("assets" => assets[0..1])) }
+  end
+
+  def test_core_wrapper_preserves_xdg_defaults
+    package = package_named("orc")
+    assert package.fetch("xdg_data")
+    template = ROOT.join("templates/formula.rb.erb").read
+    assert_includes template, 'XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"'
+  end
+
+  def test_provider_runtime_installation_and_bundle_syntax
+    core = package_named("traces")
+    version = FIXTURE.fetch("version")
+    assets = fixture_assets
+    checksums = FIXTURE.fetch("archives").map { |archive| "#{'a' * 64}  #{archive.fetch('name')}\n" }.join
+    release = { "tag_name" => "v#{version}", "assets" => assets.values + [{ "name" => "checksums.txt", "browser_download_url" => "checksums" }] }
+    package = core.merge("archive" => "orc_%{version}_%{os}_%{arch}.tar.gz", "dependencies" => ["node", "git"], "npm_runtime" => "extras/calldiff/runtime")
+    template = ROOT.join("templates/formula.rb.erb").read
+    formula = render_formula(FakeGitHub.new("checksums" => checksums), package, release, template)
+    assert_includes formula, 'depends_on "node"'
+    assert_includes formula, 'system "npm", "ci", "--prefix", libexec/"runtime", "--legacy-peer-deps"'
+    assert_includes formula, 'runtime/node_modules/.bin:$PATH'
+    RubyVM::InstructionSequence.compile(formula)
+    bundle = render_formula(FakeGitHub.new("checksums" => checksums), package.merge("bundle" => ["traces", "traces-provider-git"]), release, template)
+    assert_includes bundle, 'depends_on "roshbhatia/tap/traces-provider-git"'
+    refute_includes bundle, 'bin.install'
+    RubyVM::InstructionSequence.compile(bundle)
   end
 
   private

@@ -1,5 +1,10 @@
 packages:
   - name: ask
+    provider_index: package-index.json
+    xdg_data: true
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
     repository: roshbhatia/ask
     description: Query agent harnesses through provider-defined adapters
     homepage: https://github.com/roshbhatia/ask
@@ -10,6 +15,11 @@ packages:
     completions: generated
 
   - name: changes
+    provider_index: package-index.json
+    xdg_data: true
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
     repository: roshbhatia/changes
     description: Review Git changes with symbol and call context
     homepage: https://github.com/roshbhatia/changes
@@ -20,6 +30,11 @@ packages:
     completions: generated
 
   - name: traces
+    provider_index: package-index.json
+    xdg_data: true
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
     repository: roshbhatia/traces
     description: Inspect agent activity as a trace tree
     homepage: https://github.com/roshbhatia/traces
@@ -30,6 +45,8 @@ packages:
     completions: generated
 
   - name: orc
+    provider_index: package-index.json
+    xdg_data: true
     repository: roshbhatia/orc
     description: Provider-neutral control plane for agent workflows
     homepage: https://github.com/roshbhatia/orc
@@ -53,6 +70,7 @@ packages:
     completions: generated
 
   - name: seshy
+    provider_index: package-index.json
     repository: roshbhatia/seshy
     description: Multi-repository worktree session manager
     homepage: https://github.com/roshbhatia/seshy
@@ -61,3 +79,66 @@ packages:
     archive: seshy_%{version}_%{os}_%{arch}.tar.gz
     checksum: checksums.txt
     completions: generated
+
+  - name: gate
+    provider_index: package-index.json
+    xdg_data: true
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
+    repository: roshbhatia/gate
+    description: Apply local rules to agent tool calls
+    homepage: https://github.com/roshbhatia/gate
+    license: MIT
+    binary: gate
+    archive: gate_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+
+  - name: tether
+    pending: true
+    required_assets: [package-index.json]
+    additional_binaries: [tsh]
+    provider_index: package-index.json
+    xdg_data: true
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
+    repository: roshbhatia/tether
+    description: List hosts and connect with a foreground process
+    homepage: https://github.com/roshbhatia/tether
+    license: MIT
+    binary: tether
+    archive: tether_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+
+  - name: agent-notes
+    provider_index: package-index.json
+    xdg_data: true
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
+    repository: roshbhatia/agent-notes
+    description: Store and inspect repository review notes
+    homepage: https://github.com/roshbhatia/agent-notes
+    license: MIT
+    binary: note
+    archive: agent-notes_%{version}_%{os}_%{arch}.tar.gz
+    checksum: checksums.txt
+    pending: true
+
+  - name: sysinit-wezterm-provider-zoxide
+    kind: provider
+    pending: true
+    repository: roshbhatia/sysinit.wezterm
+    description: Open zoxide directories from the WezTerm picker
+    homepage: https://github.com/roshbhatia/sysinit.wezterm
+    license: MIT
+    binary: zoxide-picker
+    python_script: true
+    dependencies: ["python@3.13", zoxide]
+    archive: sysinit.wezterm_provider_zoxide_%{version}_%{os}_%{arch}.tar.gz
+    checksum: sidecar
+    share: [share/wezterm/providers/zoxide.json]
+    targets:
+      macos: [arm]
+      linux: [arm, intel]

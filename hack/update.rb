@@ -113,7 +113,7 @@ def complete_release(github, package)
                 else
                   [package.fetch("checksum")]
                 end
-    (archives + checksums).all? { |name| assets.key?(name) }
+    (archives + checksums + package.fetch("required_assets", [])).all? { |name| assets.key?(name) }
   end
 end
 
@@ -161,7 +161,41 @@ def render_formula(github, package, release, template)
   release = { "version" => version }
   context = binding
   context.local_variable_set(:systems, artifacts_by_system)
-  ERB.new(template, trim_mode: "-").result(context)
+  ERB.new(template, trim_mode: "-").result(context).gsub(/\n{3,}/, "\n\n")
+end
+
+def provider_packages(github, core, release)
+  return [] unless core["provider_index"]
+
+  asset = assets_by_name(release)[core.fetch("provider_index")]
+  return [] unless asset
+
+  index = JSON.parse(github.text(asset.fetch("browser_download_url")))
+  raise "unsupported package index" unless index.fetch("version") == 1
+
+  index.fetch("packages").map do |entry|
+    name = entry.fetch("name")
+    unless name.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/) && name.start_with?("#{core.fetch("name")}-")
+      raise "invalid provider package name: #{name}"
+    end
+    unless entry.fetch("binary").match?(/\A[a-zA-Z0-9_-]+\z/)
+      raise "invalid provider binary: #{entry.fetch("binary")}"
+    end
+    entry.fetch("share", []).each do |path|
+      unless path.start_with?("share/") && !path.split("/").include?("..")
+        raise "invalid shared asset: #{path}"
+      end
+    end
+    package = core.reject { |key, _| %w[provider_index archive_root completions xdg_data additional_binaries required_assets pending].include?(key) }
+                  .merge(entry)
+    version = release.fetch("tag_name").delete_prefix("v")
+    assets = assets_by_name(release)
+    targets_for(package).values.flat_map(&:values).each do |target|
+      archive = archive_name(package, version, target)
+      raise "#{name}: release has no #{archive}" unless assets.key?(archive)
+    end
+    package
+  end
 end
 
 if $PROGRAM_NAME == __FILE__
@@ -174,27 +208,40 @@ if $PROGRAM_NAME == __FILE__
 
   manifest = YAML.safe_load(ROOT.join("packages.yml").read, permitted_classes: [], aliases: false)
   packages = manifest.fetch("packages")
-  unless options[:names].empty?
-    unknown = options[:names] - packages.map { |package| package.fetch("name") }
-    abort "unknown package: #{unknown.join(", ")}" unless unknown.empty?
-    packages = packages.select { |package| options[:names].include?(package.fetch("name")) }
-  end
-
   github = GitHub.new(ENV["GITHUB_TOKEN"] || ENV["GH_TOKEN"])
   template = ROOT.join("templates/formula.rb.erb").read
   changes = []
   skipped = []
   rendered_formulae = {}
 
-  packages.each do |package|
+  resolved = packages.flat_map do |package|
     release = complete_release(github, package)
     unless release
       if package["pending"]
         skipped << package.fetch("name")
-        next
+        next []
       end
       abort "#{package.fetch("name")}: no release contains all configured platform archives"
     end
+
+    providers = provider_packages(github, package, release)
+    bundle = if providers.empty?
+               []
+             else
+               [package.merge("name" => "#{package.fetch("name")}-all",
+                              "description" => "#{package.fetch("name")} with all provider packages",
+                              "bundle" => [package.fetch("name"), *providers.map { |provider| provider.fetch("name") }])]
+             end
+    [package, *providers, *bundle].map { |entry| [entry, release] }
+  end
+
+  unless options[:names].empty?
+    unknown = options[:names] - resolved.map { |package, _| package.fetch("name") }
+    abort "unknown package: #{unknown.join(", ")}" unless unknown.empty?
+    resolved = resolved.select { |package, _| options[:names].include?(package.fetch("name")) }
+  end
+
+  resolved.each do |package, release|
 
     destination = FORMULAE.join("#{package.fetch("name")}.rb")
     rendered = render_formula(github, package, release, template)
