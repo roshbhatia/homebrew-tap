@@ -13,8 +13,9 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v7
+      - uses: DeterminateSystems/nix-installer-action@v22
       - name: Test updater
-        run: ruby test/update_test.rb
+        run: nix develop -c ruby test/update_test.rb
       - name: Check generated formulae
         run: ruby hack/update.rb --check
         env:

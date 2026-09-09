@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
+require "fileutils"
+require "open3"
+require "tmpdir"
 
 require_relative "../hack/update"
 
@@ -142,6 +145,51 @@ class UpdateTest < Minitest::Test
                            package.merge("dependencies" => ["crush"]), release, template)
     assert_includes crush, 'depends_on "charmbracelet/tap/crush"'
     refute_includes crush, 'depends_on "crush"'
+    python_package = package.merge(
+      "dependencies" => ["python@3.13", "uv"],
+      "python_resources" => [{"name" => "wheel", "url" => "https://example.com/wheel.tar.gz", "sha256" => "a" * 64}],
+      "python_wheels" => ["psutil"]
+    )
+    python_formula = render_formula(FakeGitHub.new("checksums" => checksums), python_package, release, template)
+    assert_includes python_formula, 'depends_on "uv"'
+    assert_includes python_formula, '"wheel", "pack", wheel_source'
+    assert_includes python_formula, '--offline --no-managed-python --no-python-downloads --no-project'
+    assert_includes python_formula, '--no-index --find-links'
+    assert_includes python_formula, '--script "#{libexec}/lib/process_tree.py" "$@"'
+    refute_includes python_formula, 'exec "#{libexec}/venv/bin/python"'
+    RubyVM::InstructionSequence.compile(python_formula)
+  end
+
+  def test_python_wrapper_runs_offline_and_enforces_inline_metadata
+    formula = ROOT.join("Formula/sysinit-wezterm-provider-zoxide.rb").read
+    wrapper = formula.match(/\.write <<~SH\n(.*?)^    SH/m)[1].lines.map { |line| line.delete_prefix("      ") }.join
+    Dir.mktmpdir("brew uv test ") do |directory|
+      prefix = Pathname(directory)
+      (prefix/"libexec").mkpath
+      (prefix/"bin").mkpath
+      %w[uv python3].each do |name|
+        executable = ENV.fetch("PATH").split(File::PATH_SEPARATOR).map { |path| File.join(path, name) }.find { |path| File.executable?(path) && !File.directory?(path) }
+        assert executable, "#{name} must be supplied by the Nix shell"
+        FileUtils.ln_s executable, prefix/"bin"/(name == "python3" ? "python3.13" : name)
+      end
+      wrapper = wrapper.gsub('#{HOMEBREW_PREFIX}', directory)
+                       .gsub('#{formula_opt_bin("uv")}', (prefix/"bin").to_s)
+                       .gsub('#{formula_opt_bin("python@3.13")}', (prefix/"bin").to_s)
+                       .gsub('#{libexec}', (prefix/"libexec").to_s)
+                       .gsub('\\\\', '\\')
+      command = prefix/"picker"
+      command.write(wrapper)
+      command.chmod(0755)
+      script = prefix/"libexec/zoxide-picker"
+      script.write("# /// script\n# requires-python = \">=3.11\"\n# dependencies = []\n# ///\nimport json, sys\nprint(json.dumps([sys.argv[1:], sys.stdin.read()]))\n")
+      output, error, result = Open3.capture3({"UV_CACHE_DIR" => (prefix/"cache").to_s}, command.to_s, "folder with spaces", stdin_data: "request")
+      assert result.success?, error
+      assert_equal [["folder with spaces"], "request"], JSON.parse(output)
+      script.write(script.read.sub("dependencies = []", 'dependencies = ["sysinit-missing-dependency==999.0.0"]'))
+      _, error, result = Open3.capture3(command.to_s, binmode: true)
+      refute result.success?
+      assert_match(/sysinit-missing-dependency/, error)
+    end
   end
 
   private

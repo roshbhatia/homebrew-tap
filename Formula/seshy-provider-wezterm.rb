@@ -5,9 +5,11 @@ class SeshyProviderWezterm < Formula
   desc "Select a checkout group for token parser review"
   homepage "https://github.com/roshbhatia/seshy"
   license "MIT"
+  revision 1
 
   depends_on "python@3.13"
   depends_on "roshbhatia/tap/seshy"
+  depends_on "uv"
 
   on_macos do
     on_arm do
@@ -36,7 +38,8 @@ class SeshyProviderWezterm < Formula
     (bin/"seshy-picker").write <<~SH
       #!/bin/sh
       export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-      exec "#{formula_opt_bin("python@3.13")}/python3.13" "#{libexec}/seshy-picker" "$@"
+      exec "#{formula_opt_bin("uv")}/uv" --no-cache run --offline --no-managed-python --no-python-downloads --no-project \\
+        --python "#{formula_opt_bin("python@3.13")}/python3.13" --script "#{libexec}/seshy-picker" "$@"
     SH
     (bin/"seshy-picker").chmod 0755
   end

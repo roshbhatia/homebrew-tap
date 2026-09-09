@@ -17,6 +17,7 @@
             ruby
             nixfmt
             python3
+            uv
             gh
             git
           ];
@@ -29,6 +30,7 @@
               nativeBuildInputs = with nixpkgs.legacyPackages.${system}; [
                 ruby
                 python3
+                uv
               ];
             }
             ''

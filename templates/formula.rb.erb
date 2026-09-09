@@ -16,6 +16,9 @@ class <%= package.fetch("class_name") %> < Formula
   version <%= release.fetch("version").dump %>
 <% end -%>
   license <%= package.fetch("license").dump %>
+<% if package["python_script"] -%>
+  revision 1
+<% end -%>
 
 <% package.fetch("bundle", []).sort.each do |dependency| -%>
   depends_on <%= "roshbhatia/tap/#{dependency}".dump %>
@@ -96,9 +99,27 @@ class <%= package.fetch("class_name") %> < Formula
 <% if package["python_resources"] -%>
     venv = virtualenv_create(libexec/"venv", formula_opt_bin("python@3.13")/"python3.13")
     venv.pip_install resources
+<% if package["python_wheels"] -%>
+    site_packages = libexec/"venv/lib/python3.13/site-packages"
+    (libexec/"wheels").mkpath
+<% package.fetch("python_wheels").each do |name| -%>
+    wheel_source = buildpath/"wheels/<%= name %>"
+    wheel_source.mkpath
+    wheel_files = [site_packages/<%= name.dump %>, *Dir[site_packages/"<%= name %>-*.dist-info"]]
+    odie "Missing installed wheel metadata for <%= name %>" unless wheel_files.length == 2 && wheel_files.all? { |file| File.exist?(file) }
+    FileUtils.cp_r wheel_files, wheel_source
+    system libexec/"venv/bin/python", "-m", "wheel", "pack", wheel_source, "--dest-dir", libexec/"wheels"
+<% end -%>
+<% end -%>
     (libexec/"process-tree").write <<~SH
       #!/bin/sh
+<% if package["python_wheels"] -%>
+      exec "#{formula_opt_bin("uv")}/uv" run --offline --no-managed-python --no-python-downloads --no-project \\
+        --python "#{formula_opt_bin("python@3.13")}/python3.13" --no-index --find-links "#{libexec}/wheels" \\
+        --script "#{libexec}/lib/process_tree.py" "$@"
+<% else -%>
       exec "#{libexec}/venv/bin/python" "#{libexec}/lib/process_tree.py" "$@"
+<% end -%>
     SH
     (libexec/"process-tree").chmod 0755
 <% end -%>
@@ -121,7 +142,12 @@ class <%= package.fetch("class_name") %> < Formula
 <% if package["npm_runtime"] -%>
       export PATH="#{libexec}/runtime/node_modules/.bin:$PATH"
 <% end -%>
-      exec <%= package["python_script"] ? '"#{formula_opt_bin("python@3.13")}/python3.13" ' : '' %>"#{libexec}/<%= package.fetch("binary") %>" "$@"
+<% if package["python_script"] -%>
+      exec "#{formula_opt_bin("uv")}/uv" --no-cache run --offline --no-managed-python --no-python-downloads --no-project \\
+        --python "#{formula_opt_bin("python@3.13")}/python3.13" --script "#{libexec}/<%= package.fetch("binary") %>" "$@"
+<% else -%>
+      exec "#{libexec}/<%= package.fetch("binary") %>" "$@"
+<% end -%>
     SH
     (bin/<%= package.fetch("binary").dump %>).chmod 0755
 <% end -%>

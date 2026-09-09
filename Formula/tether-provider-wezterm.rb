@@ -7,9 +7,11 @@ class TetherProviderWezterm < Formula
   url "https://github.com/roshbhatia/tether/releases/download/v0.3.0/tether_provider_wezterm_0.3.0_darwin_arm64.tar.gz"
   sha256 "d07861ff6eaff2ab3a74bfea1b30645bc4999c7ce877e6db418628e756eb3ef6"
   license "MIT"
+  revision 1
 
   depends_on "python@3.13"
   depends_on "roshbhatia/tap/tether"
+  depends_on "uv"
 
   on_macos do
     depends_on arch: :arm64
@@ -36,7 +38,8 @@ class TetherProviderWezterm < Formula
     (bin/"tether-picker").write <<~SH
       #!/bin/sh
       export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-      exec "#{formula_opt_bin("python@3.13")}/python3.13" "#{libexec}/tether-picker" "$@"
+      exec "#{formula_opt_bin("uv")}/uv" --no-cache run --offline --no-managed-python --no-python-downloads --no-project \\
+        --python "#{formula_opt_bin("python@3.13")}/python3.13" --script "#{libexec}/tether-picker" "$@"
     SH
     (bin/"tether-picker").chmod 0755
   end

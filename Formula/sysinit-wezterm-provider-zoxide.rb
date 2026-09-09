@@ -7,8 +7,10 @@ class SysinitWeztermProviderZoxide < Formula
   url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.1/sysinit.wezterm_provider_zoxide_0.1.1_darwin_arm64.tar.gz"
   sha256 "d95fb9db4952f641003f29a4069286ebe6ce15cd48f971a611143cedeb53ba4d"
   license "MIT"
+  revision 1
 
   depends_on "python@3.13"
+  depends_on "uv"
   depends_on "zoxide"
 
   on_macos do
@@ -36,7 +38,8 @@ class SysinitWeztermProviderZoxide < Formula
     (bin/"zoxide-picker").write <<~SH
       #!/bin/sh
       export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-      exec "#{formula_opt_bin("python@3.13")}/python3.13" "#{libexec}/zoxide-picker" "$@"
+      exec "#{formula_opt_bin("uv")}/uv" --no-cache run --offline --no-managed-python --no-python-downloads --no-project \\
+        --python "#{formula_opt_bin("python@3.13")}/python3.13" --script "#{libexec}/zoxide-picker" "$@"
     SH
     (bin/"zoxide-picker").chmod 0755
   end
