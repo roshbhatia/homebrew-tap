@@ -4,26 +4,26 @@
 class Tether < Formula
   desc "List hosts and connect with a foreground process"
   homepage "https://github.com/roshbhatia/tether"
-  url "https://github.com/roshbhatia/tether/releases/download/v0.3.0/tether_0.3.0_darwin_arm64.tar.gz"
-  sha256 "0836160f349939f73731fce08f004f784608621ec14976bfa16fc46834bd5c68"
+  url "https://github.com/roshbhatia/tether/releases/download/v0.3.1/tether_0.3.1_darwin_arm64.tar.gz"
+  sha256 "11af9f29372e9d35869f0e9917c7a908806c0650694574c367be2738059344f9"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/tether/releases/download/v0.3.0/tether_0.3.0_darwin_arm64.tar.gz"
-      sha256 "0836160f349939f73731fce08f004f784608621ec14976bfa16fc46834bd5c68"
+      url "https://github.com/roshbhatia/tether/releases/download/v0.3.1/tether_0.3.1_darwin_arm64.tar.gz"
+      sha256 "11af9f29372e9d35869f0e9917c7a908806c0650694574c367be2738059344f9"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/tether/releases/download/v0.3.0/tether_0.3.0_linux_arm64.tar.gz"
-      sha256 "ea67bd48734fe9955ea9068b1abc40d19a79be7a8bd3166ed889d7e2871a31a1"
+      url "https://github.com/roshbhatia/tether/releases/download/v0.3.1/tether_0.3.1_linux_arm64.tar.gz"
+      sha256 "4a74b0e92d7070a4b1cb45c082223b64806c74636d22d82886b9d1af72064eef"
     end
     on_intel do
-      url "https://github.com/roshbhatia/tether/releases/download/v0.3.0/tether_0.3.0_linux_amd64.tar.gz"
-      sha256 "3d181225c0420472cc1a7c9d4ec0279798d1bcce7844578ffbafc11c59d20273"
+      url "https://github.com/roshbhatia/tether/releases/download/v0.3.1/tether_0.3.1_linux_amd64.tar.gz"
+      sha256 "8c17dc02a23d8f74cecb26e32bb40b544417a03721b40fa35ceee3a7462f16ca"
     end
   end
 

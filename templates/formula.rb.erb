@@ -158,7 +158,7 @@ class <%= package.fetch("class_name") %> < Formula
   test do
 <% if package["bundle"] -%>
     assert_path_exists pkgshare/"providers.txt"
-<% elsif package["python_script"] -%>
+<% elsif package["python_script"] || package.fetch("share", []).any? { |file| file.start_with?("share/wezterm/providers/") } -%>
     request = {
       version: "provider/v1", kind: "request", requestId: "brew-test",
       capability: "picker.describe", input: {}
