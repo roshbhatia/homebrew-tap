@@ -11,6 +11,7 @@ require "yaml"
 
 ROOT = Pathname.new(__dir__).parent
 FORMULAE = ROOT.join("Formula")
+DEPENDENCY_ALIASES = { "crush" => "charmbracelet/tap/crush" }.freeze
 TARGETS = {
   "macos" => {
     "arm" => { "os" => "darwin", "arch" => "arm64", "requirement" => "arm64" },
@@ -146,6 +147,9 @@ def artifact(github, package, assets, checksums, archive)
 end
 
 def render_formula(github, package, release, template)
+  package = package.merge("dependencies" => package.fetch("dependencies", []).map do |dependency|
+    DEPENDENCY_ALIASES.fetch(dependency, dependency)
+  end)
   version = release.fetch("tag_name").delete_prefix("v")
   assets = assets_by_name(release)
   checksums = checksum_map(github, package, assets)

@@ -138,6 +138,10 @@ class UpdateTest < Minitest::Test
     assert_includes bundle, 'depends_on "roshbhatia/tap/traces-provider-git"'
     refute_includes bundle, 'bin.install'
     RubyVM::InstructionSequence.compile(bundle)
+    crush = render_formula(FakeGitHub.new("checksums" => checksums),
+                           package.merge("dependencies" => ["crush"]), release, template)
+    assert_includes crush, 'depends_on "charmbracelet/tap/crush"'
+    refute_includes crush, 'depends_on "crush"'
   end
 
   private

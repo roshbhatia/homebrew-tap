@@ -8,7 +8,7 @@ class AskProviderCrush < Formula
   sha256 "2d15ec168142b5c1fdd479769c80f8451ead1b23928391369f965aa7ea5bff13"
   license "MIT"
 
-  depends_on "crush"
+  depends_on "charmbracelet/tap/crush"
 
   on_macos do
     depends_on arch: :arm64
