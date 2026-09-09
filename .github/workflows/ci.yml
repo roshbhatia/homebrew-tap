@@ -33,3 +33,7 @@ jobs:
             name=$(basename "$formula" .rb)
             brew audit --strict "roshbhatia/tap/$name"
           done
+      - name: Install and test the process provider
+        run: |
+          brew install --formula roshbhatia/tap/orc-provider-zmx
+          brew test roshbhatia/tap/orc-provider-zmx

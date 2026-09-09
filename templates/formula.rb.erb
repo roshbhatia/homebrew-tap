@@ -166,6 +166,9 @@ class <%= package.fetch("class_name") %> < Formula
     assert_equal "brew-test", response.fetch("requestId")
     assert_equal "ok", response.fetch("status")
     assert_predicate response.fetch("output").fetch("title"), :present?
+<% elsif package["python_wheels"] -%>
+    ENV["UV_CACHE_DIR"] = (testpath/"uv-cache").to_s
+    assert_match "inspect", shell_output("#{libexec}/process-tree --help")
 <% elsif package["kind"] == "provider" -%>
     assert_path_exists bin/<%= package.fetch("binary").dump %>
 <% else -%>
