@@ -106,8 +106,9 @@ class <%= package.fetch("class_name") %> < Formula
     wheel_source = buildpath/"wheels/<%= name %>"
     wheel_source.mkpath
     wheel_files = [site_packages/<%= name.dump %>, *Dir[site_packages/"<%= name %>-*.dist-info"]]
-    odie "Missing installed wheel metadata for <%= name %>" unless wheel_files.length == 2 && wheel_files.all? { |file| File.exist?(file) }
-    FileUtils.cp_r wheel_files, wheel_source
+    wheel_complete = wheel_files.length == 2 && wheel_files.all? { |file| File.exist?(file) }
+    odie "Missing installed wheel metadata for <%= name %>" unless wheel_complete
+    cp_r wheel_files, wheel_source
     system libexec/"venv/bin/python", "-m", "wheel", "pack", wheel_source, "--dest-dir", libexec/"wheels"
 <% end -%>
 <% end -%>
