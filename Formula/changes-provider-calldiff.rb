@@ -35,7 +35,8 @@ class ChangesProviderCalldiff < Formula
     (share/"changes/providers/calldiff").install "share/changes/providers/calldiff/provider.yaml"
     (libexec/"runtime").install "runtime/package.json", "runtime/package-lock.json"
     system "npm", "ci", "--prefix", libexec/"runtime", "--legacy-peer-deps"
-    inreplace libexec/"runtime/node_modules/calldiff/dist/languages/bash.js", '[".sh", ".bash"]', '[".sh", ".bash", ".zsh"]'
+    inreplace libexec/"runtime/node_modules/calldiff/dist/languages/bash.js",
+              '[".sh", ".bash"]', '[".sh", ".bash", ".zsh"]'
     (bin/"changes-provider-calldiff").write <<~SH
       #!/bin/sh
       export XDG_DATA_DIRS="#{HOMEBREW_PREFIX}/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"

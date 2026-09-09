@@ -87,7 +87,8 @@ class <%= package.fetch("class_name") %> < Formula
 <% if package["npm_runtime"] -%>
     (libexec/"runtime").install "runtime/package.json", "runtime/package-lock.json"
     system "npm", "ci", "--prefix", libexec/"runtime", "--legacy-peer-deps"
-    inreplace libexec/"runtime/node_modules/calldiff/dist/languages/bash.js", '[".sh", ".bash"]', '[".sh", ".bash", ".zsh"]'
+    inreplace libexec/"runtime/node_modules/calldiff/dist/languages/bash.js",
+              '[".sh", ".bash"]', '[".sh", ".bash", ".zsh"]'
 <% end -%>
 <% package.fetch("libexec_assets", []).each do |asset| -%>
     (libexec/<%= File.dirname(asset).dump %>).install <%= asset.dump %>
