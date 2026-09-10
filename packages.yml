@@ -126,6 +126,22 @@ packages:
     checksum: checksums.txt
     pending: true
 
+  - name: sysinit-wezterm-provider-zmx
+    kind: provider
+    repository: roshbhatia/sysinit.wezterm
+    description: Attach persistent Zmx sessions from the WezTerm picker
+    homepage: https://github.com/roshbhatia/sysinit.wezterm
+    license: MIT
+    binary: zmx-picker
+    python_script: true
+    dependencies: ["python@3.13", "neurosnap/tap/zmx"]
+    archive: sysinit.wezterm_provider_zmx_%{version}_%{os}_%{arch}.tar.gz
+    checksum: sidecar
+    share: [share/wezterm/providers/zmx.json]
+    targets:
+      macos: [arm]
+      linux: [arm, intel]
+
   - name: sysinit-wezterm-provider-zoxide
     kind: provider
     pending: true

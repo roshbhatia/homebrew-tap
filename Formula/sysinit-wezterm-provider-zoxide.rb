@@ -4,8 +4,8 @@
 class SysinitWeztermProviderZoxide < Formula
   desc "Open zoxide directories from the WezTerm picker"
   homepage "https://github.com/roshbhatia/sysinit.wezterm"
-  url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.1/sysinit.wezterm_provider_zoxide_0.1.1_darwin_arm64.tar.gz"
-  sha256 "d95fb9db4952f641003f29a4069286ebe6ce15cd48f971a611143cedeb53ba4d"
+  url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.2/sysinit.wezterm_provider_zoxide_0.1.2_darwin_arm64.tar.gz"
+  sha256 "4b054b17013f9895645639fa1ff3d367b45fdf10cd79b7efa322bd886331e7a0"
   license "MIT"
   revision 1
 
@@ -17,18 +17,18 @@ class SysinitWeztermProviderZoxide < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.1/sysinit.wezterm_provider_zoxide_0.1.1_darwin_arm64.tar.gz"
-      sha256 "d95fb9db4952f641003f29a4069286ebe6ce15cd48f971a611143cedeb53ba4d"
+      url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.2/sysinit.wezterm_provider_zoxide_0.1.2_darwin_arm64.tar.gz"
+      sha256 "4b054b17013f9895645639fa1ff3d367b45fdf10cd79b7efa322bd886331e7a0"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.1/sysinit.wezterm_provider_zoxide_0.1.1_linux_arm64.tar.gz"
-      sha256 "d326e54849c051a38696fbf335259c36eec22bf0f6b2bd354530eb27a879cdfc"
+      url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.2/sysinit.wezterm_provider_zoxide_0.1.2_linux_arm64.tar.gz"
+      sha256 "ac5c8619a1dd57a425d8c9223ba0c3d5094d39d6b1947f9baa08a1512cc693ab"
     end
     on_intel do
-      url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.1/sysinit.wezterm_provider_zoxide_0.1.1_linux_amd64.tar.gz"
-      sha256 "98f9f23d41731ace047e98e359dfae1f23cf2bc949cd297e8b7474bd39d6b2ba"
+      url "https://github.com/roshbhatia/sysinit.wezterm/releases/download/v0.1.2/sysinit.wezterm_provider_zoxide_0.1.2_linux_amd64.tar.gz"
+      sha256 "ad6b51cf698974442f550612398f9e212d75606f4584df5ff0297483ac71820c"
     end
   end
 

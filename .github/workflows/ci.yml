@@ -44,3 +44,7 @@ jobs:
           brew install --formula roshbhatia/tap/tether-provider-wezterm roshbhatia/tap/seshy-provider-wezterm
           brew test roshbhatia/tap/tether-provider-wezterm
           brew test roshbhatia/tap/seshy-provider-wezterm
+      - name: Install and test the Zmx picker
+        run: |
+          brew install --formula roshbhatia/tap/sysinit-wezterm-provider-zmx
+          brew test roshbhatia/tap/sysinit-wezterm-provider-zmx
