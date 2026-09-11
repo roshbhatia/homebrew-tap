@@ -26,6 +26,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Check tap syntax and style
         run: |
+          for formula in Formula/*.rb; do
+            name=$(basename "$formula" .rb)
+            brew trust --formula "roshbhatia/tap/$name"
+          done
           brew tap --custom-remote roshbhatia/tap "$PWD"
           brew readall roshbhatia/tap
           brew style Formula/*.rb
