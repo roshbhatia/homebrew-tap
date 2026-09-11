@@ -4,31 +4,31 @@
 class Orc < Formula
   desc "Provider-neutral control plane for agent workflows"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_0.12.5_darwin_arm64.tar.gz"
-  sha256 "aab5360806b7e03aa6c5a847032be917971fce33a00384bb0c8fe727c323b324"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_0.12.8_darwin_arm64.tar.gz"
+  sha256 "5f27551bfb130a848ef5692e9525492bc9d2ee4c0ef93e5b72b9ba2bb36fc605"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_0.12.5_darwin_arm64.tar.gz"
-      sha256 "aab5360806b7e03aa6c5a847032be917971fce33a00384bb0c8fe727c323b324"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_0.12.8_darwin_arm64.tar.gz"
+      sha256 "5f27551bfb130a848ef5692e9525492bc9d2ee4c0ef93e5b72b9ba2bb36fc605"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_0.12.5_linux_arm64.tar.gz"
-      sha256 "d8607b78592aeb1b8d1a76bc6fe4cbd6bfb4213104f8da6b93f07806fe2ce382"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_0.12.8_linux_arm64.tar.gz"
+      sha256 "a4b18e35aa436f47a59e79932e6a6acb555996864640cb82c38db12518ba0e1e"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_0.12.5_linux_amd64.tar.gz"
-      sha256 "dffb7a3c337810ac3cd27fc66af34ed3b69e39e853008aa49085100404c17733"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_0.12.8_linux_amd64.tar.gz"
+      sha256 "908c0606ed233f052d3b76b20ef06db13fa359173511bb2086052526093a6bb5"
     end
   end
 
   def install
-    archive_root = Dir["orc_0.12.5_*_*"]
+    archive_root = Dir["orc_0.12.8_*_*"]
                    .find { |path| File.directory?(path) } || buildpath
 
     libexec.install "#{archive_root}/bin/orc"

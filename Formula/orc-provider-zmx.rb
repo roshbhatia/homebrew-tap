@@ -6,8 +6,8 @@ class OrcProviderZmx < Formula
 
   desc "Prepare a persistent repair session"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_zmx_0.12.5_darwin_arm64.tar.gz"
-  sha256 "8010c94fc3444bfeabf037d9d93d238907fe5cae94eeb47bd7e1cdae98eb71c2"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_zmx_0.12.8_darwin_arm64.tar.gz"
+  sha256 "1c9340026f5ec3c404d8d1376d4d467237bfe65112ef62ccd6c8b716f17f11df"
   license "MIT"
 
   depends_on "bash"
@@ -21,18 +21,18 @@ class OrcProviderZmx < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_zmx_0.12.5_darwin_arm64.tar.gz"
-      sha256 "8010c94fc3444bfeabf037d9d93d238907fe5cae94eeb47bd7e1cdae98eb71c2"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_zmx_0.12.8_darwin_arm64.tar.gz"
+      sha256 "1c9340026f5ec3c404d8d1376d4d467237bfe65112ef62ccd6c8b716f17f11df"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_zmx_0.12.5_linux_arm64.tar.gz"
-      sha256 "d419de742abfa2d39fffe792d39ce5950377c069868b76d18ef7c85170c7ba45"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_zmx_0.12.8_linux_arm64.tar.gz"
+      sha256 "645bfe63f74b5604e57e174e3891fbe651330e9b249baaaa3f71f86f95dba012"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_zmx_0.12.5_linux_amd64.tar.gz"
-      sha256 "2b521874ab572c12d22d64c1e21bd61593a852ddf20dbbbd741b3c621f3d72f1"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_zmx_0.12.8_linux_amd64.tar.gz"
+      sha256 "ea01a859b4cdbf475005c47512dc899fe72fda32f2e5119d75f466c4b27ac106"
     end
   end
 

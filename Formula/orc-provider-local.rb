@@ -4,8 +4,8 @@
 class OrcProviderLocal < Formula
   desc "Prepare the token parser test command"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_local_0.12.5_darwin_arm64.tar.gz"
-  sha256 "fbee48d878719010b63047e333003ec5d1e30f0015b83c64dfa9266eb7b7a256"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_local_0.12.8_darwin_arm64.tar.gz"
+  sha256 "8526dd208e7d627a263fe3a41731bcf69aee40b9644b3a9456b1c736bc5fd488"
   license "MIT"
 
   depends_on "bash"
@@ -16,18 +16,18 @@ class OrcProviderLocal < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_local_0.12.5_darwin_arm64.tar.gz"
-      sha256 "fbee48d878719010b63047e333003ec5d1e30f0015b83c64dfa9266eb7b7a256"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_local_0.12.8_darwin_arm64.tar.gz"
+      sha256 "8526dd208e7d627a263fe3a41731bcf69aee40b9644b3a9456b1c736bc5fd488"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_local_0.12.5_linux_arm64.tar.gz"
-      sha256 "c5a7c18e686161019b53f55a999e92f9ee3fc119949e61552e79bd63854ad983"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_local_0.12.8_linux_arm64.tar.gz"
+      sha256 "fb1b9dbfc1c574e0733b84d235649b123b44383a6c7a3b9aed358d1d3eb8d60b"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_local_0.12.5_linux_amd64.tar.gz"
-      sha256 "865d99eacc072a3f52e30408bb89884c29a91249e6a8051f517fd8a20f02ca28"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.8/orc_provider_local_0.12.8_linux_amd64.tar.gz"
+      sha256 "f692013ce4605a6605497ec3ef47271417a8f1720c989f9197c564b63c1854bb"
     end
   end
 
