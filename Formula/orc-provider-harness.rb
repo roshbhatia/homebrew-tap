@@ -4,8 +4,8 @@
 class OrcProviderHarness < Formula
   desc "Prepare the token parser review session"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_harness_0.12.3_darwin_arm64.tar.gz"
-  sha256 "4bef3a1accf5371c87854826859efb456eb1d9aec3613706ff64524a6974261b"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_harness_0.12.4_darwin_arm64.tar.gz"
+  sha256 "b342e9b77beb40a9ad8e748cf236d4a38f6c0cc0ad624c0df320b661c8832aac"
   license "MIT"
 
   depends_on "bash"
@@ -16,18 +16,18 @@ class OrcProviderHarness < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_harness_0.12.3_darwin_arm64.tar.gz"
-      sha256 "4bef3a1accf5371c87854826859efb456eb1d9aec3613706ff64524a6974261b"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_harness_0.12.4_darwin_arm64.tar.gz"
+      sha256 "b342e9b77beb40a9ad8e748cf236d4a38f6c0cc0ad624c0df320b661c8832aac"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_harness_0.12.3_linux_arm64.tar.gz"
-      sha256 "2f15c81f68094b8f81e774de9dcec419ede06313ac9e99d9365130318bb31dc5"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_harness_0.12.4_linux_arm64.tar.gz"
+      sha256 "5e623abf4e2568068d53d1439cbda33a70093c56427616c0ae62764c2b020c59"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_provider_harness_0.12.3_linux_amd64.tar.gz"
-      sha256 "cb3adbc11bf8f9d8f79b7f9078a78cffd50d0a2456377c4d433a988af3e08a45"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_harness_0.12.4_linux_amd64.tar.gz"
+      sha256 "d3c706decf39d01095c56bbd82a96d774a5635c16c737e6bd967f9abac324211"
     end
   end
 

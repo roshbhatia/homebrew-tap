@@ -4,12 +4,13 @@
 class OrcAll < Formula
   desc "All providers for orc"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_darwin_arm64.tar.gz"
-  sha256 "bdfa342bc61257a572db78f2f6f4cb2e40a3911e9ddb2f5de9ab41ea5514e6b7"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_0.12.4_darwin_arm64.tar.gz"
+  sha256 "00974a7e63ec562525af45968419f2349fd88451724e6191f88f2d9002ecf68b"
   license "MIT"
 
   depends_on "roshbhatia/tap/orc"
   depends_on "roshbhatia/tap/orc-provider-changes"
+  depends_on "roshbhatia/tap/orc-provider-github-aw"
   depends_on "roshbhatia/tap/orc-provider-harness"
   depends_on "roshbhatia/tap/orc-provider-local"
   depends_on "roshbhatia/tap/orc-provider-traces"
@@ -20,18 +21,18 @@ class OrcAll < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_darwin_arm64.tar.gz"
-      sha256 "bdfa342bc61257a572db78f2f6f4cb2e40a3911e9ddb2f5de9ab41ea5514e6b7"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_0.12.4_darwin_arm64.tar.gz"
+      sha256 "00974a7e63ec562525af45968419f2349fd88451724e6191f88f2d9002ecf68b"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_linux_arm64.tar.gz"
-      sha256 "c659c6d666745464e63b57d206dc96e1e7c9f89c85ac08e9a1f0d1501750100d"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_0.12.4_linux_arm64.tar.gz"
+      sha256 "13b5b2e920bebc1fe79b9b4d3d604f8add36cc9d3ea23a263ec0f85940c985aa"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.3/orc_0.12.3_linux_amd64.tar.gz"
-      sha256 "d19d77bcbf43906c19d1c59d76fc340e93db1f709e0b0f4e2d66086fd33ba80d"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_0.12.4_linux_amd64.tar.gz"
+      sha256 "587b7db14e972b8d3b045f5d623cb189f3e90de03846b03eb877c557e5954d5e"
     end
   end
 
@@ -39,6 +40,7 @@ class OrcAll < Formula
     (pkgshare/"providers.txt").write <<~TEXT
       orc
       orc-provider-changes
+      orc-provider-github-aw
       orc-provider-harness
       orc-provider-local
       orc-provider-traces
