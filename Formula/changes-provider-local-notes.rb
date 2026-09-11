@@ -4,26 +4,26 @@
 class ChangesProviderLocalNotes < Formula
   desc "Keep a local note on prefix validation"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_local-notes_0.12.3_darwin_arm64.tar.gz"
-  sha256 "56c4829c977ce45588d5229674d3929ab9e6ed3e0bb639b4614df376d4fc4047"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_local-notes_0.13.0_darwin_arm64.tar.gz"
+  sha256 "ac8033bf810c3435ad2ebc7581eacbada12b1853a9d6dd080422d1578cbf4c1c"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_local-notes_0.12.3_darwin_arm64.tar.gz"
-      sha256 "56c4829c977ce45588d5229674d3929ab9e6ed3e0bb639b4614df376d4fc4047"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_local-notes_0.13.0_darwin_arm64.tar.gz"
+      sha256 "ac8033bf810c3435ad2ebc7581eacbada12b1853a9d6dd080422d1578cbf4c1c"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_local-notes_0.12.3_linux_arm64.tar.gz"
-      sha256 "4cce099ef80e412d8afddf41b4c2e8d322076fd9811884ab33fbc31ab165d954"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_local-notes_0.13.0_linux_arm64.tar.gz"
+      sha256 "60a7794f6b28d23405e25551175468a1096db5febacdf2902a4132667d219a9d"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_local-notes_0.12.3_linux_amd64.tar.gz"
-      sha256 "f33bc4e6f188f839961f8da7d7b51e363dbce79b106d0f2da0e7b92496e1d9d7"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_local-notes_0.13.0_linux_amd64.tar.gz"
+      sha256 "484a5a5384a4329aa50f34bffbddd67b6f8e50d1fbae7ffc08d7f43f505bce6b"
     end
   end
 

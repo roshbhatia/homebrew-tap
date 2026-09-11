@@ -4,8 +4,8 @@
 class ChangesProviderGitNotes < Formula
   desc "Store token parser review notes in Git"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_git-notes_0.12.3_darwin_arm64.tar.gz"
-  sha256 "2aabe1312bcc222bc1c29e785b8526db146cfae8b35b55c5a4f8cce6e8f99ee5"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_git-notes_0.13.0_darwin_arm64.tar.gz"
+  sha256 "aac6cb69c51d012fdd1853802df93fe3a44277851273cfeee88abc806de6395a"
   license "MIT"
 
   depends_on "git"
@@ -14,18 +14,18 @@ class ChangesProviderGitNotes < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_git-notes_0.12.3_darwin_arm64.tar.gz"
-      sha256 "2aabe1312bcc222bc1c29e785b8526db146cfae8b35b55c5a4f8cce6e8f99ee5"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_git-notes_0.13.0_darwin_arm64.tar.gz"
+      sha256 "aac6cb69c51d012fdd1853802df93fe3a44277851273cfeee88abc806de6395a"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_git-notes_0.12.3_linux_arm64.tar.gz"
-      sha256 "c8c194fed17be857104bfb641c56969faad78546b36c1b0f14a535528212bafb"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_git-notes_0.13.0_linux_arm64.tar.gz"
+      sha256 "8ee1c358690774fd3616498c1a9a2989af7f496feaf334d9752f8f89722502f7"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_git-notes_0.12.3_linux_amd64.tar.gz"
-      sha256 "cdfa401667f818448f5ef667df35a0cc663d3e50f8343898c0b70276532a186c"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_git-notes_0.13.0_linux_amd64.tar.gz"
+      sha256 "f572c10232d97d06d6331a28730bfcc9fc3d1ea8ddb6f28f980292d93a2d1678"
     end
   end
 

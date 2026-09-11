@@ -4,8 +4,8 @@
 class ChangesProviderGithubPr < Formula
   desc "Replay an offline pull request review thread"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_github-pr_0.12.3_darwin_arm64.tar.gz"
-  sha256 "1881259c4eca5bb38e4595e61dacea0a0c6642e8d480c26e5e3debbdaa82bf52"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_github-pr_0.13.0_darwin_arm64.tar.gz"
+  sha256 "dc1b478788cf22dbaafdfaa9609ab9584870faa5c4a7382886b59b397926b000"
   license "MIT"
 
   depends_on "gh"
@@ -15,18 +15,18 @@ class ChangesProviderGithubPr < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_github-pr_0.12.3_darwin_arm64.tar.gz"
-      sha256 "1881259c4eca5bb38e4595e61dacea0a0c6642e8d480c26e5e3debbdaa82bf52"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_github-pr_0.13.0_darwin_arm64.tar.gz"
+      sha256 "dc1b478788cf22dbaafdfaa9609ab9584870faa5c4a7382886b59b397926b000"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_github-pr_0.12.3_linux_arm64.tar.gz"
-      sha256 "4393b8a5648ccb1608915be4f20880a206419cb433f32c7cde7df9831d1e34c7"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_github-pr_0.13.0_linux_arm64.tar.gz"
+      sha256 "0b98fbebf4c21ac6ca59bcbe815f07eb0543a1db9e062ff6029098527a906c3f"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_github-pr_0.12.3_linux_amd64.tar.gz"
-      sha256 "19cff32743a5262a97e629ed1e1e5ecee7441494813738c0d9103c4bbadaa6b5"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_github-pr_0.13.0_linux_amd64.tar.gz"
+      sha256 "5719e89105183eff6e5b758983505c0f016ef65bd0c66f60e6e01775c7cae5a4"
     end
   end
 

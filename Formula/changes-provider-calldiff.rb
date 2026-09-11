@@ -4,8 +4,8 @@
 class ChangesProviderCalldiff < Formula
   desc "Inspect the new validation call"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_calldiff_0.12.3_darwin_arm64.tar.gz"
-  sha256 "d66cf63df091db97c11893ee34d6cbc254d8761ee18e297610aa473c58cda89d"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_calldiff_0.13.0_darwin_arm64.tar.gz"
+  sha256 "b5f683944234ad83545df5ee13cf2973a8108171cc5b18f4f310dd53f9db3023"
   license "MIT"
 
   depends_on "git"
@@ -15,18 +15,18 @@ class ChangesProviderCalldiff < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_calldiff_0.12.3_darwin_arm64.tar.gz"
-      sha256 "d66cf63df091db97c11893ee34d6cbc254d8761ee18e297610aa473c58cda89d"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_calldiff_0.13.0_darwin_arm64.tar.gz"
+      sha256 "b5f683944234ad83545df5ee13cf2973a8108171cc5b18f4f310dd53f9db3023"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_calldiff_0.12.3_linux_arm64.tar.gz"
-      sha256 "7f7be66c5b65ef4e48c952bf8a753a32817e014a4f31ea8db05d5d17fb6ab164"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_calldiff_0.13.0_linux_arm64.tar.gz"
+      sha256 "ae9c8cad7888f069c022be28b3fcd29c87ced581fce11f57d6738ab9b7ca8c4f"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_calldiff_0.12.3_linux_amd64.tar.gz"
-      sha256 "307fa5a7715478d6f43cb259ed66d20f971478fc340378278abaaac57809ee91"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_calldiff_0.13.0_linux_amd64.tar.gz"
+      sha256 "21baa6bcdf22dfc76100dc8c3961e55571b7b4793efa0005d0be77066f3bd8c9"
     end
   end
 

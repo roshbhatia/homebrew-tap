@@ -4,8 +4,8 @@
 class OrcProviderTraces < Formula
   desc "Read the repair session activity"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_traces_0.12.4_darwin_arm64.tar.gz"
-  sha256 "a70aed80e11423e9dbe9259463469ce050ab5386e7028bed7e747a1d7a08fb93"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_traces_0.12.5_darwin_arm64.tar.gz"
+  sha256 "810c537725bf7d8cba34a21dc63e255b552a8be39914737a30428c63797af050"
   license "MIT"
 
   depends_on "bash"
@@ -17,18 +17,18 @@ class OrcProviderTraces < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_traces_0.12.4_darwin_arm64.tar.gz"
-      sha256 "a70aed80e11423e9dbe9259463469ce050ab5386e7028bed7e747a1d7a08fb93"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_traces_0.12.5_darwin_arm64.tar.gz"
+      sha256 "810c537725bf7d8cba34a21dc63e255b552a8be39914737a30428c63797af050"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_traces_0.12.4_linux_arm64.tar.gz"
-      sha256 "821cd35dc58ed52c8a0d55cec420ee98467391c10654b130530e24b58a86279f"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_traces_0.12.5_linux_arm64.tar.gz"
+      sha256 "c0e277cefacc9e0f190687bad388474eab9d630ddf1fd80f68f95194e1951e7a"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_traces_0.12.4_linux_amd64.tar.gz"
-      sha256 "f0f60592d7fbe7e0b3cbea5a8a954a0b36bb4139e1127ae9d67fa3e0d5b1c633"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_traces_0.12.5_linux_amd64.tar.gz"
+      sha256 "a9b76a0bd95e42a68fe026b5c9f53f0b2ea33415df3ce369648652bfd05931f9"
     end
   end
 

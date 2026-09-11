@@ -4,26 +4,26 @@
 class Changes < Formula
   desc "Review Git changes with symbol and call context"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_0.12.3_darwin_arm64.tar.gz"
-  sha256 "fa6d71cc5a70dabfef561e6c6e37fd922e88204735ae517eb600f970f64d34ce"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_0.13.0_darwin_arm64.tar.gz"
+  sha256 "b96b608b57c8f77cdfaf8821bc8791e8f619eefce8b9a2536de6427e03d16c0e"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_0.12.3_darwin_arm64.tar.gz"
-      sha256 "fa6d71cc5a70dabfef561e6c6e37fd922e88204735ae517eb600f970f64d34ce"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_0.13.0_darwin_arm64.tar.gz"
+      sha256 "b96b608b57c8f77cdfaf8821bc8791e8f619eefce8b9a2536de6427e03d16c0e"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_0.12.3_linux_arm64.tar.gz"
-      sha256 "e89f47dc27183bcde43417a8a31634e00a9bf5dfe47d1ca0dc1e53f810c14741"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_0.13.0_linux_arm64.tar.gz"
+      sha256 "1ac0368c6e16f4e9850154a48edfd1e4e624a0dcd097092b945ec7cd422fd5c7"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_0.12.3_linux_amd64.tar.gz"
-      sha256 "123c134c4bde1b978d695f1558b1d1644ce29f6237db02b80166db2b87975eb9"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_0.13.0_linux_amd64.tar.gz"
+      sha256 "c8200f4ddf2d4e93e321563dcbf996b40192370faf9d6c0f2d1351a2b3783654"
     end
   end
 

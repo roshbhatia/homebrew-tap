@@ -4,26 +4,26 @@
 class ChangesProviderCodexReview < Formula
   desc "Replay an offline token parser review"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_codex-review_0.12.3_darwin_arm64.tar.gz"
-  sha256 "4bdd6387de4c7b7d9c276652f3f776d2d64913cbc6bab636dbd3a080238b5ab0"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_codex-review_0.13.0_darwin_arm64.tar.gz"
+  sha256 "2b601c9c06f30610cbb3a22366a120eb0abe2f73a4cc5801e4fa194f17e1b995"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_codex-review_0.12.3_darwin_arm64.tar.gz"
-      sha256 "4bdd6387de4c7b7d9c276652f3f776d2d64913cbc6bab636dbd3a080238b5ab0"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_codex-review_0.13.0_darwin_arm64.tar.gz"
+      sha256 "2b601c9c06f30610cbb3a22366a120eb0abe2f73a4cc5801e4fa194f17e1b995"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_codex-review_0.12.3_linux_arm64.tar.gz"
-      sha256 "f778e13d71aad93a78500c228f3532776e791e127049f94b157e1d7e08247726"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_codex-review_0.13.0_linux_arm64.tar.gz"
+      sha256 "e0f9b8ba6ee1434b19bf417f7f4ac8ff057d58be308183a7042c3e2afe01ec56"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_codex-review_0.12.3_linux_amd64.tar.gz"
-      sha256 "d47712df9b2114955c4057c323d6e8b9b095ba8575e6f9d32401916ff5b4d310"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_codex-review_0.13.0_linux_amd64.tar.gz"
+      sha256 "d6eddc36f5680e1af734ed7ed0c2854d0a88b88a490d279ec42dfcde70625f17"
     end
   end
 

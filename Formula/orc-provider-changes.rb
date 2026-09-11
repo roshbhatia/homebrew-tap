@@ -4,8 +4,8 @@
 class OrcProviderChanges < Formula
   desc "Prepare a diff inspection for the token parser repair"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_changes_0.12.4_darwin_arm64.tar.gz"
-  sha256 "29fbf673130ec2cd103c2c07010015a9d9b2b3a174f04660d7c8fbc5f08b133b"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_changes_0.12.5_darwin_arm64.tar.gz"
+  sha256 "3f8abbd0eb77024a9896609c2d6edfab7a6f9a4c801741caac9a70e4bef49bcc"
   license "MIT"
 
   depends_on "bash"
@@ -17,18 +17,18 @@ class OrcProviderChanges < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_changes_0.12.4_darwin_arm64.tar.gz"
-      sha256 "29fbf673130ec2cd103c2c07010015a9d9b2b3a174f04660d7c8fbc5f08b133b"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_changes_0.12.5_darwin_arm64.tar.gz"
+      sha256 "3f8abbd0eb77024a9896609c2d6edfab7a6f9a4c801741caac9a70e4bef49bcc"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_changes_0.12.4_linux_arm64.tar.gz"
-      sha256 "54365b61191a9ff56f80cae066a1fb128292cc0d39639f168827ab4663f40345"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_changes_0.12.5_linux_arm64.tar.gz"
+      sha256 "ab7003beda97edc2222f71fecdd3a5e4e088684295f16bc8034fc2848540ab3c"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_changes_0.12.4_linux_amd64.tar.gz"
-      sha256 "f8c9e55aa911f56e9a6a091d4904a09e7eadfb436f1e34d7230fd8eebc95b231"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_changes_0.12.5_linux_amd64.tar.gz"
+      sha256 "e4eb974d4af038f9f10fa5644de1b735febe3c9158625a3563ec3c1d1070df24"
     end
   end
 

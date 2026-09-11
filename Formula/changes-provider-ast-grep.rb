@@ -4,8 +4,8 @@
 class ChangesProviderAstGrep < Formula
   desc "Inspect the changed token parser symbol"
   homepage "https://github.com/roshbhatia/changes"
-  url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_ast-grep_0.12.3_darwin_arm64.tar.gz"
-  sha256 "5318dcdf3c0a37736c284e6d1c811a87de090e024a95facae44f5429f409849f"
+  url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_ast-grep_0.13.0_darwin_arm64.tar.gz"
+  sha256 "e787382c19c8a1a9d6272cbe8b990a852826abbb895e84eaa5a6bd8125a8c7b8"
   license "MIT"
 
   depends_on "ast-grep"
@@ -14,18 +14,18 @@ class ChangesProviderAstGrep < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_ast-grep_0.12.3_darwin_arm64.tar.gz"
-      sha256 "5318dcdf3c0a37736c284e6d1c811a87de090e024a95facae44f5429f409849f"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_ast-grep_0.13.0_darwin_arm64.tar.gz"
+      sha256 "e787382c19c8a1a9d6272cbe8b990a852826abbb895e84eaa5a6bd8125a8c7b8"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_ast-grep_0.12.3_linux_arm64.tar.gz"
-      sha256 "a395d5d8cb5688ed488b1a819224c08ae58ab8390ab679b1d98d6bb35b3759ca"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_ast-grep_0.13.0_linux_arm64.tar.gz"
+      sha256 "e9d9963cb51d56f8d34f9e54a72450c31a0eea269b366b094d4e6f25911bb07b"
     end
     on_intel do
-      url "https://github.com/roshbhatia/changes/releases/download/v0.12.3/changes_provider_ast-grep_0.12.3_linux_amd64.tar.gz"
-      sha256 "fd3dcdd3996a9c004f615173d04f1b71fc3551e847eb71c2b523501495f19f46"
+      url "https://github.com/roshbhatia/changes/releases/download/v0.13.0/changes_provider_ast-grep_0.13.0_linux_amd64.tar.gz"
+      sha256 "37193eb57d95aea5e3d791be5921ce1018f77a56f4bcecc09c3e1adfce3240d0"
     end
   end
 

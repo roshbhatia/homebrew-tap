@@ -4,8 +4,8 @@
 class OrcProviderGithubAw < Formula
   desc "Track a real factory task through GitHub Actions"
   homepage "https://github.com/roshbhatia/orc"
-  url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_github-aw_0.12.4_darwin_arm64.tar.gz"
-  sha256 "c4b74daab259f01e94c99031d86255658d7445cf1c099981b7e894ba3380faae"
+  url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_github-aw_0.12.5_darwin_arm64.tar.gz"
+  sha256 "c8a9822ca9e0740b9e46e3e55833aa801dd1c3b08967e43a940505a3d2cbda57"
   license "MIT"
 
   depends_on "bash"
@@ -17,18 +17,18 @@ class OrcProviderGithubAw < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_github-aw_0.12.4_darwin_arm64.tar.gz"
-      sha256 "c4b74daab259f01e94c99031d86255658d7445cf1c099981b7e894ba3380faae"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_github-aw_0.12.5_darwin_arm64.tar.gz"
+      sha256 "c8a9822ca9e0740b9e46e3e55833aa801dd1c3b08967e43a940505a3d2cbda57"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_github-aw_0.12.4_linux_arm64.tar.gz"
-      sha256 "918716f77b57e663aa5c4429e8347dad54b7a510aedeb1bcadab40edec5801b9"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_github-aw_0.12.5_linux_arm64.tar.gz"
+      sha256 "6609add202577335bf4666c17b6338c1e4361d6f626ae2f59c7fbdf65acf434b"
     end
     on_intel do
-      url "https://github.com/roshbhatia/orc/releases/download/v0.12.4/orc_provider_github-aw_0.12.4_linux_amd64.tar.gz"
-      sha256 "4e99fe3be83ef6bde99475acf06951dcc3433c2cf14e2317e40bf9ff168c36f9"
+      url "https://github.com/roshbhatia/orc/releases/download/v0.12.5/orc_provider_github-aw_0.12.5_linux_amd64.tar.gz"
+      sha256 "a423051766d1d053bbf35a24e6d5576be1528699a15a62ba8d98e812fdd15043"
     end
   end
 
