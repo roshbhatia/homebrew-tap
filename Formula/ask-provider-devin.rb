@@ -4,26 +4,26 @@
 class AskProviderDevin < Formula
   desc "Devin CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_devin_0.7.2_darwin_arm64.tar.gz"
-  sha256 "aa8becaac9937e56adeb4fd5b32e20c79d50aee6519caa7bbb85c3860c2b5f4b"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_devin_0.8.0_darwin_arm64.tar.gz"
+  sha256 "3f2fead07766ca75c8815d3f9325d686bc07f5403096a1c6648f974218523b93"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_devin_0.7.2_darwin_arm64.tar.gz"
-      sha256 "aa8becaac9937e56adeb4fd5b32e20c79d50aee6519caa7bbb85c3860c2b5f4b"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_devin_0.8.0_darwin_arm64.tar.gz"
+      sha256 "3f2fead07766ca75c8815d3f9325d686bc07f5403096a1c6648f974218523b93"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_devin_0.7.2_linux_arm64.tar.gz"
-      sha256 "61f60a3b02aa99db245ac1686f6c6d07e9046b29f9a9532f477670eb3b2f1040"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_devin_0.8.0_linux_arm64.tar.gz"
+      sha256 "65a5a5c64d672300056345f80174ce7afe9f9e4ac84f80b53aa89e7b99afbdaa"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_devin_0.7.2_linux_amd64.tar.gz"
-      sha256 "732f2de18894ecc0cdad4bd2e58bb8fb514e4c66ddd8abff218634fe39d198d2"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_devin_0.8.0_linux_amd64.tar.gz"
+      sha256 "3568ffb2e948fde2a6b0300652e167fb113cacc4fccf388b39a5055d0bb18a2c"
     end
   end
 

@@ -4,26 +4,26 @@
 class AskProviderPi < Formula
   desc "Pi coding agent CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_pi_0.7.2_darwin_arm64.tar.gz"
-  sha256 "8713b2516fd58c1ae91681504077a21047fe29d2d3800dffbe92b3e76b9fcf5c"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_pi_0.8.0_darwin_arm64.tar.gz"
+  sha256 "fcd758adae01208d252b388194b015f05d93c3df90dca846410f211d2dd03aa6"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_pi_0.7.2_darwin_arm64.tar.gz"
-      sha256 "8713b2516fd58c1ae91681504077a21047fe29d2d3800dffbe92b3e76b9fcf5c"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_pi_0.8.0_darwin_arm64.tar.gz"
+      sha256 "fcd758adae01208d252b388194b015f05d93c3df90dca846410f211d2dd03aa6"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_pi_0.7.2_linux_arm64.tar.gz"
-      sha256 "66eeee04929fb5da2c1baa3eb83f6b85b42d267f2812c32695b873d3d9ff59d5"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_pi_0.8.0_linux_arm64.tar.gz"
+      sha256 "8ce148c687b825a59ef21877a6e675474514c9923bc474dc2e8da23aa0318671"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_pi_0.7.2_linux_amd64.tar.gz"
-      sha256 "37a8e363e1518173116bf54c33cebdd51023f1eb2e7cbb60cf7018f9dcde9345"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_pi_0.8.0_linux_amd64.tar.gz"
+      sha256 "ffa428ccfbd66237ebd98b454c3c408a4a60f58130d6e3392acfdd92c40fc267"
     end
   end
 

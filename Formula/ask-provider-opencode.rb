@@ -4,8 +4,8 @@
 class AskProviderOpencode < Formula
   desc "Opencode CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_opencode_0.7.2_darwin_arm64.tar.gz"
-  sha256 "186331a3df4579ef12ee0a3b13cab1bcbb7bc987b7c3061cd53e3cc6f4bfda31"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_opencode_0.8.0_darwin_arm64.tar.gz"
+  sha256 "7ef1419c2616284c56c5585229094dd80b5db1b0b100087715fa211349017926"
   license "MIT"
 
   depends_on "opencode"
@@ -14,18 +14,18 @@ class AskProviderOpencode < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_opencode_0.7.2_darwin_arm64.tar.gz"
-      sha256 "186331a3df4579ef12ee0a3b13cab1bcbb7bc987b7c3061cd53e3cc6f4bfda31"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_opencode_0.8.0_darwin_arm64.tar.gz"
+      sha256 "7ef1419c2616284c56c5585229094dd80b5db1b0b100087715fa211349017926"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_opencode_0.7.2_linux_arm64.tar.gz"
-      sha256 "5b8d9ce1133cba435634f6d49df4abbd8e19c243066da63e7ace602eeea76743"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_opencode_0.8.0_linux_arm64.tar.gz"
+      sha256 "d48703e0989831db5c7c7132cc9f8c6a21f8d14b6c4482006b1a0b712956df99"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_opencode_0.7.2_linux_amd64.tar.gz"
-      sha256 "c9449e5a0f9e601303ab01ce6ecc6943a7afacce27f47e1fb7dbe8555bcd677a"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_opencode_0.8.0_linux_amd64.tar.gz"
+      sha256 "c88fa6060f7922f29dfbc9b4c6c38765c4444c99a311907c226667126b62fee5"
     end
   end
 

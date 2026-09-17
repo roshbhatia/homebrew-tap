@@ -4,26 +4,26 @@
 class AskProviderAntigravity < Formula
   desc "Antigravity CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_antigravity_0.7.2_darwin_arm64.tar.gz"
-  sha256 "49eab9126dfb57cfbfd9b3b533c5bfd5087b645ae50b778c8bbed9285861be4d"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_antigravity_0.8.0_darwin_arm64.tar.gz"
+  sha256 "bf737c9f7f3788341003a6f91bfda3137b4a5d4bebecfeadf46c86332d4f8ddb"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_antigravity_0.7.2_darwin_arm64.tar.gz"
-      sha256 "49eab9126dfb57cfbfd9b3b533c5bfd5087b645ae50b778c8bbed9285861be4d"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_antigravity_0.8.0_darwin_arm64.tar.gz"
+      sha256 "bf737c9f7f3788341003a6f91bfda3137b4a5d4bebecfeadf46c86332d4f8ddb"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_antigravity_0.7.2_linux_arm64.tar.gz"
-      sha256 "06e72fe73b4dafad72da825e376e6ac77464010e40045bec9d6428bb045e2def"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_antigravity_0.8.0_linux_arm64.tar.gz"
+      sha256 "6f09df829604e86727057147b94638f7d9ec9ba25f6f9dd72c24eff194c3b899"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_antigravity_0.7.2_linux_amd64.tar.gz"
-      sha256 "8cdcddc31a22a1f7f78617f55380a67140a5acbae1df6a1581dc2eac2a4db03f"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_antigravity_0.8.0_linux_amd64.tar.gz"
+      sha256 "5785d7b1cc02ea6021e838cbf84eaca927d2591329da92a3526621e4c9ab651a"
     end
   end
 

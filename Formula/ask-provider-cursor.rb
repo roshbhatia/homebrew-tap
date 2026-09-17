@@ -4,26 +4,26 @@
 class AskProviderCursor < Formula
   desc "Cursor Agent CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_cursor_0.7.2_darwin_arm64.tar.gz"
-  sha256 "cc8646ac148df1d1ef0ee1c109224604448614c2c8e33645dcc6afa22fa53300"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_cursor_0.8.0_darwin_arm64.tar.gz"
+  sha256 "1097eb6d17bd9f9f8ffcbc04884e5fea5b90c677f2f750c922eefaacc6e98023"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_cursor_0.7.2_darwin_arm64.tar.gz"
-      sha256 "cc8646ac148df1d1ef0ee1c109224604448614c2c8e33645dcc6afa22fa53300"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_cursor_0.8.0_darwin_arm64.tar.gz"
+      sha256 "1097eb6d17bd9f9f8ffcbc04884e5fea5b90c677f2f750c922eefaacc6e98023"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_cursor_0.7.2_linux_arm64.tar.gz"
-      sha256 "95a0caf4b399ac3fad2b0ea01b9ba74d4d69f30e808561c42041928dd927d863"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_cursor_0.8.0_linux_arm64.tar.gz"
+      sha256 "d817d95222ad0295729bbd362a803a94bccc8b3c1607c6f413aca44e500803ef"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_cursor_0.7.2_linux_amd64.tar.gz"
-      sha256 "216a309087b75405843ebcb5419b75ea245070c9455823b921e4c5978e5df2e2"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_cursor_0.8.0_linux_amd64.tar.gz"
+      sha256 "4ee9a1a66485344d9aa1934ce78dc4eca372fa8058108018a52f4021ce9313ff"
     end
   end
 

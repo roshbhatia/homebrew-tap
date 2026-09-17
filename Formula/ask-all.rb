@@ -4,8 +4,8 @@
 class AskAll < Formula
   desc "All providers for ask"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_darwin_arm64.tar.gz"
-  sha256 "dd4f798426a97d4cecbaf3a669ce519966a9f90137e43c63ac2b5277b2f9da4a"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_0.8.0_darwin_arm64.tar.gz"
+  sha256 "20ec415547720ef8e943d9c05f54b7e05779b80fb4c7ed3a2d298ff626b0ce43"
   license "MIT"
 
   depends_on "roshbhatia/tap/ask"
@@ -26,18 +26,18 @@ class AskAll < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_darwin_arm64.tar.gz"
-      sha256 "dd4f798426a97d4cecbaf3a669ce519966a9f90137e43c63ac2b5277b2f9da4a"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_0.8.0_darwin_arm64.tar.gz"
+      sha256 "20ec415547720ef8e943d9c05f54b7e05779b80fb4c7ed3a2d298ff626b0ce43"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_linux_arm64.tar.gz"
-      sha256 "b10631d9321534193ee56c3892d280c001521636087e3d720eb760acdfbf64a5"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_0.8.0_linux_arm64.tar.gz"
+      sha256 "9e54c4120c34cc0ed878a66ea53242dbd41692973ebd96eb79340fcd9325ed3c"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_0.7.2_linux_amd64.tar.gz"
-      sha256 "59290630c0006f51d174c936e1252b95124c7830f3186265533c3785d6779b9e"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_0.8.0_linux_amd64.tar.gz"
+      sha256 "6c68a44156cf3711318bcfd450b216b441ccf81f98f446d756c0673c0490c284"
     end
   end
 

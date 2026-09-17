@@ -4,26 +4,26 @@
 class AskProviderGoose < Formula
   desc "Goose CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_goose_0.7.2_darwin_arm64.tar.gz"
-  sha256 "96498483c096ee1bc9abfad5996c982df651068abb685c5de32546c312711728"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_goose_0.8.0_darwin_arm64.tar.gz"
+  sha256 "faba2aebbcd94bcd63fb4793739922e55764cfb113d092e964745878ed1dff68"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_goose_0.7.2_darwin_arm64.tar.gz"
-      sha256 "96498483c096ee1bc9abfad5996c982df651068abb685c5de32546c312711728"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_goose_0.8.0_darwin_arm64.tar.gz"
+      sha256 "faba2aebbcd94bcd63fb4793739922e55764cfb113d092e964745878ed1dff68"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_goose_0.7.2_linux_arm64.tar.gz"
-      sha256 "00eedaf38d6d8966e89918b5eb82d1c9e471af9089aedebdaca0b3340a1500bf"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_goose_0.8.0_linux_arm64.tar.gz"
+      sha256 "a0202e4dacf7af106add1d1525fd0e116d68927cc7fdc92f069dcbf2ce6d90d9"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_goose_0.7.2_linux_amd64.tar.gz"
-      sha256 "b93ec62e0ca2ebaea2c99be767893281afd0784becb70a0a43834fd10601dcd2"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_goose_0.8.0_linux_amd64.tar.gz"
+      sha256 "c9a4fbb5b48e8e3021f4fa93a4b3849d5e8cadc5b99111d7c5d6bc3fd4226993"
     end
   end
 

@@ -4,26 +4,26 @@
 class AskProviderCodex < Formula
   desc "Codex CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_codex_0.7.2_darwin_arm64.tar.gz"
-  sha256 "553f2bfec693916686e813c579fb67cde61b1fd016bc281d5361b953af3bcfe9"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_codex_0.8.0_darwin_arm64.tar.gz"
+  sha256 "61defaeaf2b1bf9ba6675fbc3efbe58abd40f1202bd36d2cd1712671ecc85b52"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_codex_0.7.2_darwin_arm64.tar.gz"
-      sha256 "553f2bfec693916686e813c579fb67cde61b1fd016bc281d5361b953af3bcfe9"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_codex_0.8.0_darwin_arm64.tar.gz"
+      sha256 "61defaeaf2b1bf9ba6675fbc3efbe58abd40f1202bd36d2cd1712671ecc85b52"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_codex_0.7.2_linux_arm64.tar.gz"
-      sha256 "24cc76ac2489111b74746cde406a50433dfcac1c02e1868533b567fe20001c82"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_codex_0.8.0_linux_arm64.tar.gz"
+      sha256 "a64325071474aece5a7660b98919242e526e4941478366dd78e0871472d99759"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_codex_0.7.2_linux_amd64.tar.gz"
-      sha256 "6d5e52e01fe3b7d01dcc872062f2dec5555aba0bee98b3f8348764e9bb2bbe18"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_codex_0.8.0_linux_amd64.tar.gz"
+      sha256 "0a713949a7d4ca28528146270080b8ddc042b712871523457c2ac79247359092"
     end
   end
 

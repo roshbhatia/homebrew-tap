@@ -4,26 +4,26 @@
 class AskProviderFx < Formula
   desc "Fx coding agent CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_fx_0.7.2_darwin_arm64.tar.gz"
-  sha256 "afa3c0c46171c338c9e7feeb6ef97a2805d038a118c5a915dc74b8e42f1773bd"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_fx_0.8.0_darwin_arm64.tar.gz"
+  sha256 "2909e13edaa05e74ef565a66ed81a7fd3a0f1fcad1218584409fc5225daa74c7"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_fx_0.7.2_darwin_arm64.tar.gz"
-      sha256 "afa3c0c46171c338c9e7feeb6ef97a2805d038a118c5a915dc74b8e42f1773bd"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_fx_0.8.0_darwin_arm64.tar.gz"
+      sha256 "2909e13edaa05e74ef565a66ed81a7fd3a0f1fcad1218584409fc5225daa74c7"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_fx_0.7.2_linux_arm64.tar.gz"
-      sha256 "1d76b7d8555798efd8c2fca5e8cb15b8f06ca50455d7838e18935c3a04bee540"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_fx_0.8.0_linux_arm64.tar.gz"
+      sha256 "ecbe7d6ab701d744c4e6e5164aa3cee9f2d0362bf17e1698bdc80c2be9c41aca"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_fx_0.7.2_linux_amd64.tar.gz"
-      sha256 "0d6bf8087c546085a5def0a03231be3e39ce793bd29a01b568e35c3c8f3cc3b4"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_fx_0.8.0_linux_amd64.tar.gz"
+      sha256 "096147a9e522f125cdc2b9b069d34a114ffc7799ecf6b82b4e791bf82bd69db2"
     end
   end
 

@@ -4,26 +4,26 @@
 class AskProviderCopilot < Formula
   desc "GitHub Copilot CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_copilot_0.7.2_darwin_arm64.tar.gz"
-  sha256 "203dc2b9de1f2bb997ea070bc290abca5d587f36b8446027eb9840c14e45590b"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_copilot_0.8.0_darwin_arm64.tar.gz"
+  sha256 "e0ef3a813dee8d90a57025d9046b21275e7992c23682fd236cc7af689d223293"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_copilot_0.7.2_darwin_arm64.tar.gz"
-      sha256 "203dc2b9de1f2bb997ea070bc290abca5d587f36b8446027eb9840c14e45590b"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_copilot_0.8.0_darwin_arm64.tar.gz"
+      sha256 "e0ef3a813dee8d90a57025d9046b21275e7992c23682fd236cc7af689d223293"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_copilot_0.7.2_linux_arm64.tar.gz"
-      sha256 "a5a6f79588f0318bb9acb828592982051e4ffc347678d57f11b2d3301f9d60e6"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_copilot_0.8.0_linux_arm64.tar.gz"
+      sha256 "a2130f73273c55be1763250c7322a9ae66742dd745ff6464eb257979da160a95"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_copilot_0.7.2_linux_amd64.tar.gz"
-      sha256 "3f6f83bb70dd20201b4098196b7e07bf5c5611ae2b3687a73ede783095cfab8f"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_copilot_0.8.0_linux_amd64.tar.gz"
+      sha256 "ab2284e20e78c16bf3ac9cd38ad9ddf1b39c2f73ab7eb8f03f51f48a1cce5a60"
     end
   end
 

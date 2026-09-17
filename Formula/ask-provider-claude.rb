@@ -4,26 +4,26 @@
 class AskProviderClaude < Formula
   desc "Claude Code"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_claude_0.7.2_darwin_arm64.tar.gz"
-  sha256 "4c2ad33cad6e385e8433655324b20d76b5caec236050e414cb3e46f83a18ab0c"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_claude_0.8.0_darwin_arm64.tar.gz"
+  sha256 "472ea4b591fbff2e339f265f73b2c390cbfc7c014b8381531e409f4e6edc6cda"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_claude_0.7.2_darwin_arm64.tar.gz"
-      sha256 "4c2ad33cad6e385e8433655324b20d76b5caec236050e414cb3e46f83a18ab0c"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_claude_0.8.0_darwin_arm64.tar.gz"
+      sha256 "472ea4b591fbff2e339f265f73b2c390cbfc7c014b8381531e409f4e6edc6cda"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_claude_0.7.2_linux_arm64.tar.gz"
-      sha256 "3e828a83c9092e1c5c8d86ac1793eb26c0b4996c915c43b2b281dd6f9294b951"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_claude_0.8.0_linux_arm64.tar.gz"
+      sha256 "7232a5b9e90e22a34f8c5ef151365c288aef342c13409a86c691183276fb49ba"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_claude_0.7.2_linux_amd64.tar.gz"
-      sha256 "13cebdac74a45910a58d630402acfd425aca2613f1518b05015ef96b90157b0c"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_claude_0.8.0_linux_amd64.tar.gz"
+      sha256 "523e55299905a61e4e56dcd90a3432e7433996a96147737baa5849b2b9917607"
     end
   end
 

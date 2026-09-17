@@ -4,8 +4,8 @@
 class AskProviderCrush < Formula
   desc "Crush CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_crush_0.7.2_darwin_arm64.tar.gz"
-  sha256 "4f88187361f77fc90f6bbdfcdfec457cffafa53dd9d6161b0912fa8c8431de00"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_crush_0.8.0_darwin_arm64.tar.gz"
+  sha256 "e4a1bed60e7c374f04ea3279d4dc1b5b57ff8ceace08e30c8c58d85f7aaa23a7"
   license "MIT"
 
   depends_on "charmbracelet/tap/crush"
@@ -14,18 +14,18 @@ class AskProviderCrush < Formula
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_crush_0.7.2_darwin_arm64.tar.gz"
-      sha256 "4f88187361f77fc90f6bbdfcdfec457cffafa53dd9d6161b0912fa8c8431de00"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_crush_0.8.0_darwin_arm64.tar.gz"
+      sha256 "e4a1bed60e7c374f04ea3279d4dc1b5b57ff8ceace08e30c8c58d85f7aaa23a7"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_crush_0.7.2_linux_arm64.tar.gz"
-      sha256 "e446f66c6e7f96270a9b1ae2b9fdf07cfea5b9b974397f13bed3e88a2a62c1bf"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_crush_0.8.0_linux_arm64.tar.gz"
+      sha256 "3525c2159c61f967db25436141514851914c10801b05d0a7ee3689bd9b486ebb"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_crush_0.7.2_linux_amd64.tar.gz"
-      sha256 "585f5a43ebae5ce97b4de34e56a868d522bee34d4ab19cf8ca14ca912ff0b35d"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_crush_0.8.0_linux_amd64.tar.gz"
+      sha256 "3ff7d5ffaa30de127f649db381d4dc014667aabec3fd4207bf2e22c3dbe9b0c5"
     end
   end
 

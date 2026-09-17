@@ -4,26 +4,26 @@
 class AskProviderHermes < Formula
   desc "Hermes Agent CLI"
   homepage "https://github.com/roshbhatia/ask"
-  url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_hermes_0.7.2_darwin_arm64.tar.gz"
-  sha256 "44071a36b7a28765f4e275920b16683987348b7286e76cf20016b11226adfedb"
+  url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_hermes_0.8.0_darwin_arm64.tar.gz"
+  sha256 "4c5b7a0bf4b14d77e4ae78857767d4238e71a918534a9816ce8ee6260c7bca9d"
   license "MIT"
 
   on_macos do
     depends_on arch: :arm64
 
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_hermes_0.7.2_darwin_arm64.tar.gz"
-      sha256 "44071a36b7a28765f4e275920b16683987348b7286e76cf20016b11226adfedb"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_hermes_0.8.0_darwin_arm64.tar.gz"
+      sha256 "4c5b7a0bf4b14d77e4ae78857767d4238e71a918534a9816ce8ee6260c7bca9d"
     end
   end
   on_linux do
     on_arm do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_hermes_0.7.2_linux_arm64.tar.gz"
-      sha256 "cf6b9004bf0b2450622a930e2d1677c75afd341b6ea826391ad811b48fea6b3e"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_hermes_0.8.0_linux_arm64.tar.gz"
+      sha256 "0f6b41807b26571c8186d3da12af96426eb83af15c38b0f6abb2fee923afc659"
     end
     on_intel do
-      url "https://github.com/roshbhatia/ask/releases/download/v0.7.2/ask_provider_hermes_0.7.2_linux_amd64.tar.gz"
-      sha256 "ee95b48bdd22035d25f4ff23f8f87e6b85ff645ef709e720978fa89642d55d23"
+      url "https://github.com/roshbhatia/ask/releases/download/v0.8.0/ask_provider_hermes_0.8.0_linux_amd64.tar.gz"
+      sha256 "654b9f1d2095fa265d6f19d6b59a5fbc562c09490406866110bb4d24a14d55d4"
     end
   end
 
